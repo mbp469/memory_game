@@ -2,14 +2,29 @@
 %html(lang='en')
   %head
     %meta(charset="UTF-8")
-    %meta(content="width-device-width, initial-scale=1" name="viewport")
+    %meta(content="width=device-width, initial-scale=1" name="viewport")
     %link(rel='stylesheet'href='src/styles/jquery-ui.min.css')
     %link(rel='stylesheet'href='src/styles/main.css')
-    %title The Game of Memory - Grunt isn't seeing this.
+    %title The Game of Memory
   %body
     -# put dummy variables here
-    %header The Game of Memory...
-    %button Button
+    %header
+      %h1 The Game of Memory
+    %section.table
+      .table-cell
+        %ul.leader
+          %li.entry#1
+            %i#1 1
+            %h2#1 Person 1
+            %span#1 25 points
+          %li.entry#2
+            %i#2 2
+            %h2#2 Person 2
+            %span#1 27 points
+
+
+
+
 
 
   %script(src="src/js/vendor/jquery-3.1.1.min.js")

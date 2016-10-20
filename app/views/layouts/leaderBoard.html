@@ -2,14 +2,31 @@
 <html lang='en'>
   <head>
     <meta charset='UTF-8'>
-    <meta content='width-device-width, initial-scale=1' name='viewport'>
+    <meta content='width=device-width, initial-scale=1' name='viewport'>
     <link href='src/styles/jquery-ui.min.css' rel='stylesheet'>
     <link href='src/styles/main.css' rel='stylesheet'>
-    <title>The Game of Memory - Grunt isn't seeing this.</title>
+    <title>The Game of Memory</title>
   </head>
   <body>
-    <header>The Game of Memory...</header>
-    <button>Button</button>
+    <header>
+      <h1>The Game of Memory</h1>
+    </header>
+    <section class='table'>
+      <div class='table-cell'>
+        <ul class='leader'>
+          <li class='entry' id='1'>
+            <i id='1'>1</i>
+            <h2 id='1'>Person 1</h2>
+            <span id='1'>25 points</span>
+          </li>
+          <li class='entry' id='2'>
+            <i id='2'>2</i>
+            <h2 id='2'>Person 2</h2>
+            <span id='1'>27 points</span>
+          </li>
+        </ul>
+      </div>
+    </section>
   </body>
   <script src='src/js/vendor/jquery-3.1.1.min.js'></script>
   <script src='src/js/vendor/jquery-ui.min.js'></script>

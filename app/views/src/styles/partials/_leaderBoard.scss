@@ -1,0 +1,23 @@
+.entry {
+  width: 100px;
+  height: 100px;
+  background: red;
+  @include transition(transform 4s ease);
+  @include transform(scale(1.25) rotate(25deg));
+
+  animation: float 20s  5s ease reverse;
+
+}
+
+@keyframes float {
+  25% {
+    transform: scale(2);;
+  }
+  50% {
+    transform: scale(0.5);
+  }
+  75% {
+    transform: scale(10);
+  }
+
+}
