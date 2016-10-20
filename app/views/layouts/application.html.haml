@@ -1,0 +1,22 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Memory Game
+    = csrf_meta_tags
+    %link{:href => "https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/journal/bootstrap.min.css", :rel => "stylesheet"}/
+    %link{:href => "../css/main.css", :rel => "stylesheet"}/
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    .container
+    - if current_user
+      %ul.user-prompts
+        %p= current_user.username
+        %p= link_to "Log out", logout_path, method: "delete"
+    - else
+      %ul.user-prompts
+        %p= link_to "Login", 'login'
+        %p= link_to "Signup", 'signup'
+    .container
+      = yield
