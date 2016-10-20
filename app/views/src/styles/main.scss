@@ -1,3 +1,18 @@
+$backgroundColor: #F2EDD7;
+$backgroundShadow: #9A8778;
+$red: #D42127;
+$green: #9CA98D;
+$yellowGreen: #D2C950;
+$brightGreen: #AED135;
+$teal: #74C2AC;
+$brown: #554840;
+$darkBrown: #423B35;
+$black: black;
+$white: white;
+
+
+
+
 /****** Vendor Imports ******/
 @import 'partials/vendor/bourbon/bourbon';
 
@@ -6,6 +21,5 @@
 
 /********** Main Styles ***********/
 *{
-  background: black;
-  color: white;
+  box-sizing: border-box;
 }

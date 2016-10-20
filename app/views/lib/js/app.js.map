@@ -1,1 +1,1 @@
-{"version":3,"sources":["../../src/js/app.js"],"names":["alert"],"mappings":";;AAAAA,MAAM,IAAN","file":"app.js","sourcesContent":["alert('hi');\n"]}
+{"version":3,"sources":[],"names":[],"mappings":"","file":"app.js","sourcesContent":[]}
