@@ -16,7 +16,5 @@
         %p= link_to "Log out", logout_path, method: "delete"
     - else
       %ul.user-prompts
-        %p= link_to "Login", 'login'
-        %p= link_to "Signup", 'signup'
     .container
       = yield
