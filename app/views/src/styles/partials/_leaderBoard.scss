@@ -51,6 +51,7 @@
     background: $brown;
     border-radius: 8px;
     box-shadow: $black 0 13px 32px;
+    transition: 0.25s cubic-bezier(.65,.7,1,.61);
 
     * {
         padding: 2%;
@@ -79,26 +80,27 @@
     // @include transition(transform 2s ease);
     // @include transform(scale(1.25) rotate(25deg));
     &:hover {
-        animation: pulse 0.35s ease infinite;
-    }
-}
-@keyframes pulse {
-    25% {
-        transform: scale(1.1);
-    }
-
-    50% {
+        // animation: pulse 0.35s ease infinite;
         transform: scale(1.2);
     }
-
-    75% {
-        transform: scale(1.1);
-    }
-
-    100% {
-        transition: scale(1);
-    }
 }
+// @keyframes pulse {
+//     25% {
+//         transform: scale(1.1);
+//     }
+//
+//     50% {
+//         transform: scale(1.2);
+//     }
+//
+//     75% {
+//         transform: scale(1.1);
+//     }
+//
+//     100% {
+//         transition: scale(1);
+//     }
+// }
 
 @keyframes spin {
   25% {
