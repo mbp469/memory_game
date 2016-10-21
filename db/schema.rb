@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(version: 20161020162833) do
 
   # These are extensions that must be enabled in order to support this database
+####DELETE GAMES TABLE#####
   enable_extension "plpgsql"
 
   create_table "games", force: :cascade do |t|
