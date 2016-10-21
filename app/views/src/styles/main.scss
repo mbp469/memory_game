@@ -16,6 +16,9 @@ $white: white;
 /****** Vendor Imports ******/
 @import 'partials/vendor/bourbon/bourbon';
 
+/****** Style Page Imports ******/
+@import 'partials/leaderBoard'; /* -marian */
+
 /********** Main Styles ***********/
 *{
   box-sizing: border-box;
