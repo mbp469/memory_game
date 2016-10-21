@@ -1,9 +1,68 @@
+#leaderboard {
+  background: none;
+  background-image: url('images/retina_wood.png');
+  // header {
+  //   background-image: url('images/retina_wood.png');
+  // }
+  // section{
+  //   background-image: url('images/retina_wood.png');
+  //
+  // }
+}
+
+#leaderboard-body {
+  font-family: "Nunito", "ABeeZee", sans-serif;
+  // background-image: url('images/retina_wood.png');
+  padding: 0% 0% 2% 0%;
+
+}
+
+
+#leaderboard-title {
+  text-align: center;
+  border-bottom: 2px solid #554840;
+  padding: 2% 2%;
+  box-shadow: 0px 2px 14px black;}
+.leader {
+  list-style-type: none;
+  list-style-type: none;
+  padding: 0;
+  position: relative;
+  margin: 0% 1%;
+}
+
 .entry {
-  width: 100px;
-  height: 100px;
-  background: red;
-  @include transition(transform 4s ease);
-  @include transform(scale(1.25) rotate(25deg));
+  position: relative;
+  width: 95%;
+  padding: 2% 2%;
+  margin: 3% 3%;
+  background: $brown;
+  border-radius: 8px;
+  box-shadow: $black 0px 13px 32px;
+  * {
+    padding: 2%;
+    background: $darkBrown;
+    color: $backgroundColor;
+    margin: 4% 2%;
+    border-radius: 3px;
+    text-align: center;
+    }
+      i {
+        position: absolute;
+        top: 12%;
+        left: 5%;
+        }
+      h3 {
+        box-shadow: $black 0px 0px 20px;
+      }
+      span {
+        position: absolute;
+        top: 12%;
+        right: 4%;
+      }
+
+  // @include transition(transform 4s ease);
+  // @include transform(scale(1.25) rotate(25deg));
 
   // animation: float 20s  5s ease reverse;
 
