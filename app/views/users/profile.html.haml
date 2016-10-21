@@ -1,2 +1,48 @@
-%h1
-  user profile page
+!!! 5
+%html(lang='en' id="leaderboard")
+  %head
+    %meta(charset="UTF-8")
+    %meta(content="width=device-width, initial-scale=1" name="viewport")
+    -# %link(rel='stylesheet'href='../src/js/vendor/jquery-ui.min.css')
+    -# %link(rel='stylesheet'href='../lib/styles/main.min.css')
+    %link(href="https://fonts.googleapis.com/css?family=ABeeZee|Nunito" rel="stylesheet")
+    -# %link(href="../lib/styles/vendor/font-awesome-4.6.3/css/font-awesome.min.css" rel="stylesheet")
+    %title UserDetails:MemoryGame
+  %body
+    %header
+      .h1-container
+        %h1 The Game of Memory
+      #userpage-container
+        #userpage-title
+          %h2
+            Welcome, User!
+
+        %aside#userpage-aside
+          %nav
+            #goto-leaderboard(href="#") View Top Scores
+            #goto-game(href="#") Return To Game
+
+
+        -# put dummy variables here
+        %section.user-table
+          .table-cell
+            #user-score-div
+              %h3 Your current total is 29 Points.
+            %ul.user-details
+              %li.user-email
+                %i#1.fa.fa-envelope
+                -# input fields will toggle readonly if edit button is pressed.
+                %input#email{readonly:true, type:"text"} user@something.com
+              %li.user-password
+                %i#1.fa.fa-key
+                %input#password{readonly:true, type:"password"} hopefully you can't read this.
+              %li.user-twitter
+                %i#1.fa.fa-twitter
+                %input#twitter{readonly:true, type:"text"} @twitterhandle
+              %li.user-facebook
+                %i#1.fa.fa-facebook-official
+                %input#facebook{readonly:true, type:"text"} facebook/page/user
+                %button#user-details-edit Edit Your Information
+                -#  submit button will toggle hidden if edit button is pressed.
+                %button#user-details-submit.hidden Submit Changes
+                -# if password has changed, a pop-up box should make your re-type it to confirm

@@ -26,6 +26,9 @@ $white: white;
   background: $backgroundColor;
   color: $brown;
 }
+button {
+  cursor: pointer;
+}
 
 .h1-container {
   background: $darkBrown;

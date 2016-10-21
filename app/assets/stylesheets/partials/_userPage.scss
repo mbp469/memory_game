@@ -1,21 +1,38 @@
 #userpage-container {
-  position: relative;
-  text-align: center;
+    position: relative;
+    text-align: center;
 }
-#userpage-aside {
-  float: left;
-  height: 70vh;
-  nav {
-    height: 69vh;
-    background: $darkBrown;
-    margin: 2% 5%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    div {
-      height: 25%;
-      margin: 6%;
-    }
-  }
 
+#userpage-aside {
+    float: left;
+    height: 75vh;
+    width: 26%;
+
+    nav {
+        height: 68vh;
+        background: #423B35;
+        margin: 5%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        div {
+            height: 25%;
+            margin: 15%;
+            width: 70%;
+            background: $backgroundColor;
+            box-shadow: 0 0 14px $black;
+            cursor: pointer;
+            &:hover {
+              opacity: 0.6;
+              color: $backgroundColor;
+              background: $brown;
+              &:active {
+                width: 71%;
+                height: 26%;
+                box-shadow: 0px 0px 4px black;
+                }
+            }
+        }
+    }
 }
