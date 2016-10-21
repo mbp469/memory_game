@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html id='leaderboard' lang='en'>
+  <head>
+    <meta charset='UTF-8'>
+    <meta content='width=device-width, initial-scale=1' name='viewport'>
+    <link href='../src/js/vendor/jquery-ui.min.css' rel='stylesheet'>
+    <link href='../lib/styles/main.min.css' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=ABeeZee|Nunito' rel='stylesheet'>
+    <link href='../lib/styles/vendor/font-awesome-4.6.3/css/font-awesome.min.css' rel='stylesheet'>
+    <title>UserDetails:MemoryGame</title>
+  </head>
+  <body id='userpage-body'>
+    <header>
+      <div class='h1-container'>
+        <h1>The Game of Memory</h1>
+      </div>
+      <div id='userpage-container'>
+        <div id='userpage-title'>
+          <h2>
+            Welcome, User!
+          </h2>
+        </div>
+        <aside id='userpage-aside'>
+          <nav>
+            <div id='goto-leaderboard'>View Top Scores</div>
+            <div id='goto-game'>Return To Game</div>
+          </nav>
+        </aside>
+        <section class='user-table'>
+          <div class='table-cell'>
+            <div id='user-score-div'>
+              <h3>Your current total is 29 Points.</h3>
+            </div>
+            <ul class='user-details'>
+              <li class='user-email'>
+                <i class='fa fa-envelope' id='1'></i>
+                <input id='email' readonly type='text'>user@something.com</input>
+              </li>
+              <li class='user-password'>
+                <i class='fa fa-key' id='1'></i>
+                <input id='password' readonly type='password'>hopefully you can't read this.</input>
+              </li>
+              <li class='user-twitter'>
+                <i class='fa fa-twitter' id='1'></i>
+                <input id='twitter' readonly type='text'>@twitterhandle</input>
+              </li>
+              <li class='user-facebook'>
+                <i class='fa fa-facebook-official' id='1'></i>
+                <input id='facebook' readonly type='text'>facebook/page/user</input>
+                <button id='user-details-edit'>Edit Your Information</button>
+                <button class='hidden' id='user-details-submit'>Submit Changes</button>
+              </li>
+            </ul>
+          </div>
+        </section>
+      </div>
+    </header>
+  </body>
+</html>
