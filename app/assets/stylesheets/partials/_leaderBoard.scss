@@ -1,0 +1,119 @@
+#leaderboard {
+    background: none;
+    background-image: url('../../images/retina_wood.png');
+}
+
+#leaderboard-body {
+    font-family: "Nunito", "ABeeZee", sans-serif;
+    padding: 0 0 2%;
+}
+
+#leaderboard-title {
+    text-align: center;
+    border-bottom: 2px solid #554840;
+    padding: 2%;
+    box-shadow: 0 2px 14px black;
+    position: relative;
+
+    h2 {
+        .fa-star {
+            position: absolute;
+            font-size: 1.5em;
+            box-shadow: 0 0 6px $black;
+            animation: spin 4s infinite;
+
+            &#left-star {
+                top: 30%;
+                left: 10%;
+            }
+
+            &#right-star {
+                top: 30%;
+                right: 10%;
+            }
+        }
+    }
+}
+
+.leader {
+    list-style-type: none;
+    list-style-type: none;
+    padding: 0;
+    position: relative;
+    margin: 0 1%;
+}
+
+.entry {
+    position: relative;
+    width: 95%;
+    padding: 2%;
+    margin: 3%;
+    background: $brown;
+    border-radius: 8px;
+    box-shadow: $black 0 13px 32px;
+
+    * {
+        padding: 2%;
+        background: $darkBrown;
+        color: $backgroundColor;
+        margin: 4% 2%;
+        border-radius: 3px;
+        text-align: center;
+    }
+
+    i {
+        position: absolute;
+        top: 12%;
+        left: 5%;
+    }
+
+    h3 {
+        box-shadow: $black 0 0 20px;
+    }
+
+    span {
+        position: absolute;
+        top: 12%;
+        right: 4%;
+    }
+    // @include transition(transform 2s ease);
+    // @include transform(scale(1.25) rotate(25deg));
+    &:hover {
+        animation: pulse 0.35s ease infinite;
+    }
+}
+@keyframes pulse {
+    25% {
+        transform: scale(1.1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    75% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transition: scale(1);
+    }
+}
+
+@keyframes spin {
+  25% {
+      transform: rotate(45deg);
+  }
+
+  50% {
+      transform: rotate(-90deg);
+  }
+
+  75% {
+      transform: rotate(45deg);
+  }
+
+  100% {
+      transition: rotate(0deg);
+  }
+}
