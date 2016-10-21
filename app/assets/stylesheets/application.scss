@@ -1,10 +1,4 @@
-/*@import "bourbon";
- *@import "home";
- *@import "users";
- *@import "boards";
- *@import "games";
- *@import "sessions";
- *@import "neat";
+/*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
@@ -18,3 +12,12 @@
  *
  *= require_self
  */
+
+
+@import "bourbon";
+@import "neat";
+@import "home";
+@import "users";
+@import "boards";
+@import "games";
+@import "sessions";
