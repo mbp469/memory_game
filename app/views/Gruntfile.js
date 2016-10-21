@@ -17,6 +17,7 @@ module.exports = function(grunt) {
                 files: {
                     'layouts/index.html':'layouts/index.haml',
                     'layouts/leaderBoard.html':'layouts/leaderBoard.haml',
+                    'layouts/userPage.html':'layouts/userPage.haml'
                 }
             }
         },
