@@ -16,7 +16,7 @@ module.exports = function(grunt) {
             dist: {
                 files: {
                     'layouts/index.html':'layouts/index.haml',
-                    'layouts/leaderBoard.html':'layouts/leaderBoard.haml'
+                    'layouts/leaderBoard.html':'layouts/leaderBoard.haml',
                 }
             }
         },
