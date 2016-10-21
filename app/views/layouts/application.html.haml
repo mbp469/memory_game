@@ -12,8 +12,10 @@
     .container
     - if current_user
       %ul.user-prompts
-        %p= current_user.username
+        %p= link_to "#{current_user.username}", 'profile'
         %p= link_to "Log out", logout_path, method: "delete"
+        %p= link_to "Leaderboard", 'leaderboard'
+        %p= link_to "Game", 'game'
     - else
       %ul.user-prompts
     .container
