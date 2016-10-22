@@ -33,26 +33,6 @@ $(document).on('turbolinks:load', function() {
 
   $(document).on('click', '.card', function() {
     $(this).find('.flipper').toggleClass('flip');
-  }
-
-  $(document).on('click', '.difficulty', function() {
-    var numCards;
-    var level = $(this).val();
-
-    if (level === 'Easy') {
-      numCards = 8;
-    } else if (level === 'Medium') {
-      numCards = 16;
-    } else if (level === 'Hard') {
-      numCards = 24;
-    }
-
-    for (var i = 1; i <= numCards; i++) {
-      createCard(i);
-    }
-
-    selectDifficulty(level);
-    shuffleMemoryCards(memoryCards);
   });
 });
 
