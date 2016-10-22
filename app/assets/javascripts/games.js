@@ -4,20 +4,20 @@ $(document).on('turbolinks:load', function() {
     var front = document.createElement('div'),
     back = document.createElement('div'),
     flipper = document.createElement('div'),
-    flipContainer = document.createElement('div');
+    card = document.createElement('div');
 
     front.className = 'front';
     back.className = 'back';
     flipper.className = 'flipper';
-    flipContainer.className = 'flipContainer';
+    card.className = 'card';
 
     $(flipper).append(front, back);
-    $(flipContainer).attr('id', id).append(flipper);
-    $('#board-container').append(flipContainer);
+    $(card).attr('id', id).append(flipper);
+    $('#board-container').append(card);
   }
 
-  $(document).on('click', '.flipContainer', function() {
-    $(this).toggleClass('flip');
+  $(document).on('click', '.card', function() {
+    $(this).find('.flipper').toggleClass('flip');
   });
 
   $(document).on('click', '.difficulty', function() {
@@ -27,14 +27,15 @@ $(document).on('turbolinks:load', function() {
     if (level === 'Easy') {
       numCards = 8;
     } else if (level === 'Medium') {
-      numCards = 12;
-    } else if (level === 'Hard') {
       numCards = 16;
+    } else if (level === 'Hard') {
+      numCards = 24;
     }
 
     for (var i = 1; i <= numCards; i++) {
       createCard('card'+i);
     }
+
   });
 
 });
