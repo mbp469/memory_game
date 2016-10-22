@@ -27,7 +27,9 @@
         %section#user-table
           -# .table-cell
           #user-score-div
-            %h3 Your current total is 29 Points.
+            %h3
+              Current Score:
+              %div 29
           %ul#user-details
             %li.user-email
               %i#1.fa.fa-envelope
@@ -42,7 +44,5 @@
             %li.user-facebook
               %i#1.fa.fa-facebook-official
               %input#facebook{readonly:true, type:"text", placeholder: "facebook/page/user"}
-              %button#user-details-edit Edit Your Information
-              -#  submit button will toggle hidden if edit button is pressed.
-              %button#user-details-submit.hidden Submit Changes
-              -# if password has changed, a pop-up box should make your re-type it to confirm
+            %button#user-details-edit Edit Your Information
+            %button#user-details-submit Submit Changes
