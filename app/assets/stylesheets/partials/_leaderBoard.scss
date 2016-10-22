@@ -1,12 +1,12 @@
-#leaderboard {
-    background: none;
-    background-image: image-url('retina_wood.png');
-}
+// #leaderboard {
+//     background: none;
+//     background-image: image-url('retina_wood.png');
+// }
 
-#leaderboard-body {
-    font-family: "Nunito", "ABeeZee", sans-serif;
-    padding: 0 0 2%;
-}
+// #leaderboard-body {
+    // font-family: "Nunito", "ABeeZee", sans-serif;
+    // padding: 0 0 2%;
+// }
 
 #leaderboard-title {
     text-align: center;
@@ -51,7 +51,7 @@
     background: $brown;
     border-radius: 8px;
     box-shadow: $black 0 13px 32px;
-
+    transition: transform 1s  cubic-bezier(.03,1.89,.45,.15);
     * {
         padding: 2%;
         background: $darkBrown;
@@ -76,27 +76,8 @@
         top: 12%;
         right: 4%;
     }
-    // @include transition(transform 2s ease);
-    // @include transform(scale(1.25) rotate(25deg));
     &:hover {
-        animation: pulse 0.35s ease infinite;
-    }
-}
-@keyframes pulse {
-    25% {
-        transform: scale(1.1);
-    }
-
-    50% {
-        transform: scale(1.2);
-    }
-
-    75% {
-        transform: scale(1.1);
-    }
-
-    100% {
-        transition: scale(1);
+        transform: scale(1.3);
     }
 }
 
