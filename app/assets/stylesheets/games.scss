@@ -2,15 +2,54 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
 #board-container {
-  @include outer-container();
-
-  img {
-    @include span-columns(3);
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  height: 100vh;
+  flex-wrap: wrap;
+  .flipContainer {
+    align-items: center;
+    cursor: pointer;
     margin-right: 0;
-    background-repeat: no-repeat;
-    height: 300px;
+    width: 24%;
+    @include perspective(1000);
+    &.flip .flipper {
+      @include transform(rotateY(180deg));
+    }
+  }
+}
+.flipper, .front, .back {
+  height: 200px;
+  width: 100%;
+  margin: 0;
+}
+.flipper {
+  @include transition(null 0.6s null);
+  @include transform-style(preserve-3d);
+  .front,
+  .back {
+    @include backface-visibility(hidden);
+  }
+  .front {
+    @include transform(rotateY(0deg));
+    background: red;
+  }
+  .back {
+    @include transform(rotateY(180deg));
+    background: blue;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+#difficulty-buttons {
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 3vh;
+  input {
+    height: 40px;
+    width: 20%;
   }
 }
