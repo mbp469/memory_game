@@ -1,5 +1,20 @@
 $(document).on('turbolinks:load', function() {
 
+  $(document).one('click', '.difficulty', function() {
+    var numCards = 1;
+
+    var level = $(this).val();
+
+    selectDifficulty(level);
+    shuffleMemoryCards(memoryCards);
+
+    shuffledMemoryCards.forEach(function(card) {
+      var cardId = card.id;
+      createCard(cardId);
+    });
+  });
+
+
   function createCard(id) {
     var front = document.createElement('div'),
     back = document.createElement('div'),
@@ -18,7 +33,6 @@ $(document).on('turbolinks:load', function() {
 
   $(document).on('click', '.card', function() {
     $(this).find('.flipper').toggleClass('flip');
-  });
 
   $(document).on('click', '.difficulty', function() {
     var numCards;
@@ -42,84 +56,70 @@ $(document).on('turbolinks:load', function() {
 });
 
 
-
-
 var cards = [
   {
-    name: "name1",
     img: "https://",
     id: 1,
   },
   {
-    name: "name2",
     img: "https://",
     id: 2
   },
   {
-    name: "name3",
     img: "https://",
     id: 3
   },
   {
-    name: "name4",
     img: "https://",
     id: 4
   },
   {
-    name: "name5",
     img: "https://",
     id: 5
   },
   {
-    name: "name6",
     img: "https://",
     id: 6
   },
   {
-    name: "name7",
     img: "https://",
     id: 7
   },
   {
-    name: "name8",
     img: "https://",
     id: 8
   },
   {
-    name: "name9",
     img: "https://",
     id: 9
   },
   {
-    name: "name10",
     img: "https://",
     id: 10
   },
   {
-    name: "name11",
     img: "https://",
     id: 11
   },
   {
-    name: "name12",
     img: "https://",
     id: 12
   },
 ];
 
-var memoryCards = []
-var shuffledMemoryCards = []
+var memoryCards = [];
+var shuffledMemoryCards = [];
 
 function selectDifficulty(difficulty) {
   if(difficulty=='Easy') {
-    gameCards = getCardsByDifficulty(cards, 4)
+    gameCards = getCardsByDifficulty(cards, 4);
   } else if(difficulty=='Medium') {
-    gameCards = getCardsByDifficulty(cards, 8)
+    gameCards = getCardsByDifficulty(cards, 8);
   } else if(difficulty=='Hard') {
-    gameCards = cards
+    gameCards = cards;
   }
-  memoryCards = gameCards.concat(gameCards)
 
+  memoryCards = gameCards.concat(gameCards)
 }
 
 function getCardsByDifficulty(cardsArray, neededNumberPairs) {
@@ -132,6 +132,7 @@ function getCardsByDifficulty(cardsArray, neededNumberPairs) {
 }
 
 function shuffleMemoryCards(cardsArray) {
+  console.log('we in');
   shuffledMemoryCards = this.shuffle(cardsArray);
 }
 
