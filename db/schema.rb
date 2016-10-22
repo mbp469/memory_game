@@ -13,8 +13,14 @@
 ActiveRecord::Schema.define(version: 20161020162833) do
 
   # These are extensions that must be enabled in order to support this database
-####DELETE GAMES TABLE#####
   enable_extension "plpgsql"
+
+  create_table "games", force: :cascade do |t|
+    t.integer  "card_slot"
+    t.string   "card_number"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "scores", force: :cascade do |t|
     t.integer  "user_id"
