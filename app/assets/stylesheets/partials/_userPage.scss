@@ -70,8 +70,10 @@
       display: inline-block;
       transition: all 1s ease-in-out;
       font-size: 1.75em;
-      animation: pulse 1s ease infinite;
-    }
+      border-radius: 8px;
+      padding: 0% 4%;
+      animation: pulse 0.5s 1s ease 2;
+      }
   }
 }
 #user-details {
@@ -121,15 +123,12 @@
 }
 @keyframes pulse {
     0% {
-        transform: rotateX(15deg);
-    }
-
-    50% {
-        transform: rotateX(-30deg);
+      background: $red;
+      color: $backgroundColor;
     }
 
     100% {
-        transform: rotateX(15deg);
+      background: $backgroundColor;
+      color: $darkBrown;
     }
-
 }
