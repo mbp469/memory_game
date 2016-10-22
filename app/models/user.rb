@@ -3,3 +3,5 @@ class User < ActiveRecord::Base
   validates :username, presence: true
   has_many :scores
 end
+
+#Do we need to validate anything other then username? maybe email?
