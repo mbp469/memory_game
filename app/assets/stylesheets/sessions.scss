@@ -6,7 +6,9 @@
   justify-content: space-around;
   align-items: center;
   a {
-    color: rgb(35, 52, 64);
+    // color: rgb(35, 52, 64);
     text-decoration: none;
+    color: $brown;
+    text-shadow: 1px 1px 2px $darkBrown;
   }
 }
