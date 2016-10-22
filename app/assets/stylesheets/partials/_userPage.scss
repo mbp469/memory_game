@@ -1,21 +1,70 @@
-#userpage-container {
-  position: relative;
-  text-align: center;
-}
-#userpage-aside {
-  float: left;
-  height: 70vh;
-  nav {
-    height: 69vh;
-    background: $darkBrown;
-    margin: 2% 5%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    div {
-      height: 25%;
-      margin: 6%;
-    }
-  }
 
+
+#userpage-container {
+    position: relative;
+    text-align: center;
+    #userpage-title {
+    box-shadow: 0px 4px 9px black;
+      h2 {
+      color: $backgroundColor;
+      background: $darkBrown;
+    }
+      }
+}
+
+#userpage-aside {
+    float: left;
+    height: 75vh;
+    width: 26%;
+
+    nav {
+        height: 68vh;
+        background: #423B35;
+        margin: 5%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border-radius: 3px;
+
+        div {
+            height: 25%;
+            margin: 15%;
+            width: 70%;
+            background: $backgroundColor;
+            box-shadow: 0 0 14px $black;
+            cursor: pointer;
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &:hover {
+                opacity: 0.6;
+                color: $backgroundColor;
+                background: $brown;
+
+                &:active {
+                    width: 71%;
+                    height: 26%;
+                    box-shadow: 0 0 4px black;
+                }
+            }
+        }
+    }
+}
+
+#user-table {
+  display: flex;
+  flex-direction: column;
+  width: 74%;
+  height: 70vh;}
+#user-score-div {
+  display: flex;
+  justify-content: center;
+}
+#user-details {
+  text-decoration: none !important ;
+  li {
+    text-decoration: none;
+  }
 }
