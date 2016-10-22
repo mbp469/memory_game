@@ -71,7 +71,14 @@
   justify-content: space-around;
   margin-bottom: 3vh;
   input {
-    height: 40px;
+    @include button(shiny, #f4f2eb);
+    font-size: 4vh;
+    height: 60%;
+    outline: none;
     width: 20%;
+    text-decoration: none;
+    color: $brown;
+    text-shadow: 1px 1px 2px $darkBrown;
+
   }
 }

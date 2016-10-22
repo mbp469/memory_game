@@ -20,7 +20,7 @@ $(document).on('turbolinks:load', function() {
     $(this).find('.flipper').toggleClass('flip');
   });
 
-  $(document).on('click', '.difficulty', function() {
+  $(document).one('click', '.difficulty', function() {
     var numCards;
     var level = $(this).val();
 
