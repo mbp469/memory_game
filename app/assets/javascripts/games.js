@@ -33,6 +33,7 @@ $(document).on('turbolinks:load', function() {
 
   $(document).on('click', '.card', function() {
     $(this).find('.flipper').toggleClass('flip');
+  }
 
   $(document).on('click', '.difficulty', function() {
     var numCards;
