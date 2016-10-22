@@ -1,46 +1,68 @@
 // Place all the styles related to the Games controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.board-wrap {
+  height: 100vh;
+  min-height: 500px;
+  padding: 20px
+}
 
 #board-container {
   display: flex;
   justify-content: space-between;
-  height: 100vh;
+  height: 100%;
+  min-height: 100%;
   flex-wrap: wrap;
-  .flipContainer {
-    align-items: center;
-    cursor: pointer;
-    margin-right: 0;
-    width: 24%;
-    @include perspective(1000);
-    &.flip .flipper {
-      @include transform(rotateY(180deg));
-    }
-  }
+  transform-style: preserve-3d;
+  perspective: 500px;
 }
-.flipper, .front, .back {
-  height: 200px;
-  width: 100%;
-  margin: 0;
+
+.card {
+  align-items: center;
+  cursor: pointer;
+  margin: 0 0 2vh 0;
+  width: 22%;
+  height: 25%;
+  perspective: 1000px;
+  z-index: 50;
 }
+
 .flipper {
-  @include transition(null 0.6s null);
-  @include transform-style(preserve-3d);
-  .front,
-  .back {
-    @include backface-visibility(hidden);
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: 3s ease-in-out;
+  width: 100%;
+  &.flip {
+    transform: rotateY(180deg);
   }
-  .front {
-    @include transform(rotateY(0deg));
-    background: red;
-  }
-  .back {
-    @include transform(rotateY(180deg));
-    background: blue;
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
+}
+
+.front,
+.back {
+  backface-visibility: hidden;
+  top: 0;
+  left: 0;
+}
+
+.front {
+  transform: rotateY(-180deg);
+  background: rgba(22, 162, 193, 0.95);
+  height: 100%;
+}
+
+.back {
+  transform: rotateY(0deg);
+  height: 100%;
+  width: 100%;
+  background: rgb(158, 46, 113);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.card, .flipper, .front, .back {
+  border-radius: 25px;
+  height: 200px;
 }
 
 #difficulty-buttons {
