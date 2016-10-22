@@ -3,6 +3,9 @@
 .container {
   background-image: image-url('retina_wood.png');
 }
+.h1-container {
+  box-shadow: 2px 4px 8px black;
+}
 .user-prompts {
   color: $darkBrown;
   font-size: 1.5em;
