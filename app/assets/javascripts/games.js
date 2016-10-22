@@ -33,11 +33,12 @@ $(document).on('turbolinks:load', function() {
     }
 
     for (var i = 1; i <= numCards; i++) {
-      createCard('card'+i);
+      createCard(i);
     }
 
+    selectDifficulty(level);
+    shuffleMemoryCards(memoryCards);
   });
-
 });
 
 
@@ -118,11 +119,13 @@ function selectDifficulty(difficulty) {
     gameCards = cards
   }
   memoryCards = gameCards.concat(gameCards)
+
 }
 
-function getCardsByDifficulty(cardsArray, neededNumberCards) {
+function getCardsByDifficulty(cardsArray, neededNumberPairs) {
   var cardsByDifficulty = [];
-  for (var i = 0; i < neededNumberCards; i++) {
+
+  for (var i = 0; i < neededNumberPairs; i++) {
     cardsByDifficulty.push(cardsArray[Math.floor(Math.random()*cardsArray.length)]);
   } //try to make conditional for above line - not repeat cards chosen
   return cardsByDifficulty;
@@ -137,17 +140,17 @@ function shuffle(array) {
   var counter = array.length, temp, index;
 
   while (counter > 0) {
-      index = Math.floor(Math.random() * counter);
+    index = Math.floor(Math.random() * counter);
 
-      counter--;
+    counter--;
 
-      temp = array[counter];
-      array[counter] = array[index];
-      array[index] = temp;
-    }
-    return array;
+    temp = array[counter];
+    array[counter] = array[index];
+    array[index] = temp;
+  }
+
+  return array;
 }
-
 
 
 //run selectDifficulty('thedifficulty')
