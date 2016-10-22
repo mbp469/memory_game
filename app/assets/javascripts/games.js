@@ -12,8 +12,6 @@ $(document).on('turbolinks:load', function() {
       var cardId = card.id;
       createCard(cardId);
     });
-
-    // console.log(memoryCards);
   });
 
 
@@ -36,8 +34,24 @@ $(document).on('turbolinks:load', function() {
   $(document).on('click', '.card', function() {
     $(this).find('.flipper').toggleClass('flip');
 
-    console.log($(this).attr('id'));
+  $(document).on('click', '.difficulty', function() {
+    var numCards;
+    var level = $(this).val();
 
+    if (level === 'Easy') {
+      numCards = 8;
+    } else if (level === 'Medium') {
+      numCards = 16;
+    } else if (level === 'Hard') {
+      numCards = 24;
+    }
+
+    for (var i = 1; i <= numCards; i++) {
+      createCard(i);
+    }
+
+    selectDifficulty(level);
+    shuffleMemoryCards(memoryCards);
   });
 });
 
@@ -104,12 +118,14 @@ function selectDifficulty(difficulty) {
   } else if(difficulty=='Hard') {
     gameCards = cards;
   }
-  memoryCards = gameCards.concat(gameCards);
+
+  memoryCards = gameCards.concat(gameCards)
 }
 
-function getCardsByDifficulty(cardsArray, neededNumberCards) {
+function getCardsByDifficulty(cardsArray, neededNumberPairs) {
   var cardsByDifficulty = [];
-  for (var i = 0; i < neededNumberCards; i++) {
+
+  for (var i = 0; i < neededNumberPairs; i++) {
     cardsByDifficulty.push(cardsArray[Math.floor(Math.random()*cardsArray.length)]);
   } //try to make conditional for above line - not repeat cards chosen
   return cardsByDifficulty;
@@ -125,17 +141,17 @@ function shuffle(array) {
   var counter = array.length, temp, index;
 
   while (counter > 0) {
-      index = Math.floor(Math.random() * counter);
+    index = Math.floor(Math.random() * counter);
 
-      counter--;
+    counter--;
 
-      temp = array[counter];
-      array[counter] = array[index];
-      array[index] = temp;
-    }
-    return array;
+    temp = array[counter];
+    array[counter] = array[index];
+    array[index] = temp;
+  }
+
+  return array;
 }
-
 
 
 //run selectDifficulty('thedifficulty')
