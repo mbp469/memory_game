@@ -16,7 +16,7 @@ $(document).on('turbolinks:load', function() {
     $('#board-container').append(flipContainer);
   }
 
-  $(document).on('click', '.flip-container', function() {
+  $(document).on('click', '.flipContainer', function() {
     $(this).toggleClass('flip');
   });
 

@@ -2,14 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
 #board-container {
-  @include outer-container();
+  display: flex;
+  justify-content: space-between;
+  height: 100vh;
+  flex-wrap: wrap;
   .flipContainer {
-    @include span-columns(3);
-    @include perspective(1000);
-    justify-content: center;
+    align-items: center;
     cursor: pointer;
+    margin-right: 0;
+    width: 24%;
+    @include perspective(1000);
     &.flip .flipper {
       @include transform(rotateY(180deg));
     }
@@ -17,7 +20,8 @@
 }
 .flipper, .front, .back {
   height: 200px;
-  width: 200px;
+  width: 100%;
+  margin: 0;
 }
 .flipper {
   @include transition(null 0.6s null);
@@ -33,6 +37,9 @@
   .back {
     @include transform(rotateY(180deg));
     background: blue;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 }
 
