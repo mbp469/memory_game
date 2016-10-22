@@ -9,9 +9,12 @@
 .user-prompts {
   color: $darkBrown;
   font-size: 1.5em;
+
     p {
+      transition: all .3s ease-in;
+      color: $darkBrown;
+
     &:hover {
-      transition: transform .3s ease-in;
       transform: scale(1.3);
     }
       a {
@@ -20,7 +23,8 @@
         }
       a:hover {
         color: $backgroundColor;
-        background: $darkBrown;
+        background: $brown;
+        text-shadow: 1px 1px 5px $black;
     }
   }
 }
