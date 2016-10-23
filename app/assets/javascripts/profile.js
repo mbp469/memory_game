@@ -23,6 +23,7 @@
 
   /* When #user-details-edit is clicked, .input-user-info becomes readonly:false */
   $('#user-details-edit').on('click',function(event){
+
     console.log('user-details-edit');
     var button = $(this);
     var userObject = respondToEdit(button);
@@ -47,7 +48,6 @@
           return userObject;
         }
       }
-
 
 
 }); //end of $(document).ready function

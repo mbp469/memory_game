@@ -7,6 +7,7 @@
     %title UserDetails:MemoryGame
   %body.user-page
   - games = [{name: 'Ragnar Lothbrok', score: '67'},{name: 'Lagertha Lothbrok', score: '98'}]
+  - userInfo = [{name: 'marian', email: 'none@none.com', password: 'pw', currentScore: '33'}]
     %header
       .h1-container
         %h1 The Game of Memory
@@ -20,25 +21,21 @@
             %button#goto-scores.view-scores View Scores
             %i.fa.fa-star
 
-
-        -# put dummy variables for user info here
         %section#user-table
-          -# .table-cell
           #user-score-div
             %h3
               Current Total:
-              #total-points 29
-            -# input fields will toggle readonly if edit button is pressed.
+              #total-points #{userInfo[0][:currentScore]}
           %ul#user-details
             %li.user-name
               %i#1.fa.fa-star
-              %input#user-name.input-user-info{readonly:true, type:"text", placeholder: "User Name"}
+              %input#user-name.input-user-info{readonly:true, type:"text", placeholder:"#{userInfo[0][:name]}"}
             %li.user-email
               %i#1.fa.fa-envelope
-              %input#email.input-user-info{readonly:true, placeholder:"user@someemail.com", type: "email"}
+              %input#email.input-user-info{readonly:true, placeholder:"#{userInfo[0][:email]}", type: "email"}
             %li.user-password
               %i#1.fa.fa-key
-              %input#password.input-user-info{readonly:true, type:"password"}
+              %input#password.input-user-info{readonly:true, type:"password", placeholder:"#{userInfo[0][:password]}"}
             %button#user-details-edit.edit-user Edit Your Information
 
             -# Section holding games and scores
