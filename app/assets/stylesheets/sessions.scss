@@ -6,6 +6,7 @@ body {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  margin: 0;
 }
 .container {
   width: 70%;
@@ -15,7 +16,9 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background: none;
+  align-self: center;
+  width: 70%;
+  margin: 0;
   a {
     text-decoration: none;
     color: $brown;
@@ -26,6 +29,7 @@ body {
   }
 }
 .login-wrapper {
+  margin-top: 10%;
   display: flex;
   width: 100%;
   box-shadow: 1px 10px 30px -10px rgba(0,0,0,0.5);
@@ -96,7 +100,7 @@ form {
   border-radius: 3px;
   box-shadow: 1px 5px 20px -5px rgba(0,0,0,0.4);
   background-color: #ef5350;
-  transition: transform 1s;
+  transition: transform .5s;
   &:hover {
     background-color: #b83432;
     transform: scale(1.05);

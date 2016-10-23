@@ -1,29 +1,27 @@
 $(document).on('turbolinks:load', function() {
   var height = $(window).height();
-  gameHeight = height + 'px';
+  var gameHeight = height + 'px';
+
   $('.board-wrap').css('height', gameHeight);
 
   $(document).one('click', '.difficulty', function() {
-    var numCards = 1;
-
     var level = $(this).val();
 
-    selectDifficulty(level);
-    shuffleMemoryCards(memoryCards);
+    var memoryCards = selectDifficulty(level);
+    var shuffledMemoryCards = shuffleMemoryCards(memoryCards);
 
-    shuffledMemoryCards.forEach(function(card) {
-      var cardId = card.id;
+    shuffledMemoryCards.forEach(function(cardId) {
       createCard(cardId);
     });
 
     $('html, body').stop().animate({
-    scrollTop: $(".board-wrap").offset().top
+      scrollTop: $(".board-wrap").offset().top
     }, 1000);
 
   });
 
 
-  function createCard(id) {
+  function createCard(cardId) {
     var front = document.createElement('div'),
     back = document.createElement('div'),
     flipper = document.createElement('div'),
@@ -35,94 +33,44 @@ $(document).on('turbolinks:load', function() {
     card.className = 'card';
 
     $(flipper).append(front, back);
-    $(card).attr('id', id).append(flipper);
+    $(card).attr({'data-card-id': cardId, 'data-card-state': 'inactive'}).append(flipper);
     $('#board-container').append(card);
   }
 
   $(document).on('click', '.card', function() {
+    var state = $(this).attr('data-card-state');
     $(this).find('.flipper').toggleClass('flip');
+
+    if (state === 'inactive') {
+      $(this).attr('data-card-state', 'active');
+    } else if (state === 'active') {
+      $(this).attr('data-card-state', 'inactive');
+    }
   });
 });
 
-
-var cards = [
-  {
-    img: "https://",
-    id: 1,
-  },
-  {
-    img: "https://",
-    id: 2
-  },
-  {
-    img: "https://",
-    id: 3
-  },
-  {
-    img: "https://",
-    id: 4
-  },
-  {
-    img: "https://",
-    id: 5
-  },
-  {
-    img: "https://",
-    id: 6
-  },
-  {
-    img: "https://",
-    id: 7
-  },
-  {
-    img: "https://",
-    id: 8
-  },
-  {
-    img: "https://",
-    id: 9
-  },
-  {
-    img: "https://",
-    id: 10
-  },
-  {
-    img: "https://",
-    id: 11
-  },
-  {
-    img: "https://",
-    id: 12
-  },
-];
-
-var memoryCards = [];
-var shuffledMemoryCards = [];
-
 function selectDifficulty(difficulty) {
   if(difficulty=='Easy') {
-    gameCards = getCardsByDifficulty(cards, 4);
+    gameCards = getCardsByDifficulty(4);
   } else if(difficulty=='Medium') {
-    gameCards = getCardsByDifficulty(cards, 8);
+    gameCards = getCardsByDifficulty(8);
   } else if(difficulty=='Hard') {
-    gameCards = cards;
+    gameCards = getCardsByDifficulty(12);
   }
-
-  memoryCards = gameCards.concat(gameCards)
+  return gameCards.concat(gameCards);
 }
 
-function getCardsByDifficulty(cardsArray, neededNumberPairs) {
+function getCardsByDifficulty(neededNumberPairs) {
   var cardsByDifficulty = [];
 
-  for (var i = 0; i < neededNumberPairs; i++) {
-    cardsByDifficulty.push(cardsArray[Math.floor(Math.random()*cardsArray.length)]);
-  } //try to make conditional for above line - not repeat cards chosen
+  for (var i = 1; i <= neededNumberPairs; i++) {
+    cardsByDifficulty.push(i);
+  }
   return cardsByDifficulty;
 }
 
 function shuffleMemoryCards(cardsArray) {
-  console.log('we in');
-  shuffledMemoryCards = this.shuffle(cardsArray);
+  return shuffle(cardsArray);
 }
 
 // Fisher-Yates Algorithm
@@ -138,7 +86,6 @@ function shuffle(array) {
     array[counter] = array[index];
     array[index] = temp;
   }
-
   return array;
 }
 
