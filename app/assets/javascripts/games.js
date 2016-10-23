@@ -56,9 +56,7 @@ $(document).on('turbolinks:load', function() {
   function checkMatch(activeCards) {
     if (activeCards.length === 2) {
       if(activeCards[0].dataset.cardId === activeCards[1].dataset.cardId) {
-        // activeCards[0].removeEventListener('click', handleCardClick);
         activeCards.off();
-        // activeCards[1].removeEventListener('click', handleCardClick);
         activeCards[0].dataset.cardState = 'matched';
         activeCards[1].dataset.cardState = 'matched';
         console.log('match');
