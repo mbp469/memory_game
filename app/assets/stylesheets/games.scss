@@ -26,7 +26,7 @@ html {
   perspective: 500px;
 }
 
-$cardImages: 'dan.jpg', 'dana.png', 'jeff.jpg', 'sam.jpg', 'bryce.jpeg', 'nicole.jpg', 'back-end.png', 'front-end.png', 'python.png', 'html.png', 'design.png', 'mobile.png';
+$cardImages: 'dan.jpg', 'dana.png', 'jeff.jpg', 'bryce.jpg', 'nicole.jpeg', 'sam.jpg', 'tiy-group.jpg', 'alyssa.jpg', 'back-end.png', 'front-end.png', 'python.png', 'design.png', 'mobile.png';
 
 .card {
   align-items: center;
@@ -69,7 +69,7 @@ $cardImages: 'dan.jpg', 'dana.png', 'jeff.jpg', 'sam.jpg', 'bryce.jpeg', 'nicole
 .front {
   transform: rotateY(-180deg);
   background: white;
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   height: 100%;
@@ -109,5 +109,25 @@ $cardImages: 'dan.jpg', 'dana.png', 'jeff.jpg', 'sam.jpg', 'bryce.jpeg', 'nicole
     color: $brown;
     text-shadow: 1px 1px 2px $darkBrown;
 
+  }
+}
+
+.modal {
+  display: none;
+  position: absolute;
+}
+.modal-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
+  z-index: 10;
+  width: 100vw;
+  height: 50vh;
+  h1, h3 {
+    flex-grow: 1;
+    width: 100%;
+    text-align: center;
   }
 }
