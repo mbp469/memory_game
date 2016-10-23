@@ -119,20 +119,23 @@
         display: block;
 
         i {
-            background: $darkBrown;
-            color: $backgroundColor;
-            font-size: 1.25em;
-            margin: 0 1%;
-        }
+          background: #423B35;
+          color: #F2EDD7;
+          font-size: 1.5em;
+          margin: 0 1%;
+          position: absolute;
+          left: 18%;
+          top: 6vh;
+          }
 
         input {
-            width: 37%;
+          width: 41%;
             height: 11vh;
             margin: 1% 0;
             font-size: 1.5em;
             text-align: center;
             outline: 0;
-
+            margin: 2% 0% 2% -4%;
             &:focus {
                 background: $backgroundShadow;
                 color: $darkBrown;
