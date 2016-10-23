@@ -41,6 +41,8 @@ $(document).on('turbolinks:load', function() {
     flipper.className = 'flipper';
     card.className = 'card';
 
+    console.log('hey nate');
+
     $(flipper).append(front, back);
     $(card).attr({'data-card-id': cardId, 'data-card-state': 'inactive'}).append(flipper);
     $('#board-container').append(card);
