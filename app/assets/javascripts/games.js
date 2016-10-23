@@ -94,21 +94,21 @@ $(document).on('turbolinks:load', function() {
   function scoreRound() {
     switch (level) {
       case 'Easy':
-      if (counter/2 < 4) {
+      if (counter/2 <= 4) {
         return 10;
       } else {
         return 5;
       }
       break;
       case 'Medium':
-      if (counter/2 < 8) {
+      if (counter/2 <= 8) {
         return 20;
       } else {
         return 10;
       }
       break;
       case 'Hard':
-      if (counter/2 < 12) {
+      if (counter/2 <= 12) {
         return 30;
       } else {
         return 15;
