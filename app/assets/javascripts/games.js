@@ -5,22 +5,29 @@ $(document).on('turbolinks:load', function() {
 
   $('.board-wrap').css('height', gameHeight);
 
-  $(document).one('click', '.difficulty', function() {
+  $(document).on('click', '.difficulty', function() {
     var level = $(this).val();
-
     var memoryCards = selectDifficulty(level);
     var shuffledMemoryCards = shuffleMemoryCards(memoryCards);
 
-    shuffledMemoryCards.forEach(function(cardId) {
-      createCard(cardId);
-    });
+    function buildGame() {
+      shuffledMemoryCards.forEach(function(cardId) {
+        createCard(cardId);
+      });
+      $('html, body').stop().animate({
+        scrollTop: $(".board-wrap").offset().top
+      }, 1000);
+      $('.card').on('click', handleCardClick);
+    }
 
-    $('html, body').stop().animate({
-      scrollTop: $(".board-wrap").offset().top
-    }, 1000);
-
-    $('.card').on('click', handleCardClick);
+    if ($('.card').length > 0) {
+      $('#board-container').empty();
+      buildGame();
+    } else {
+      buildGame();
+    }
   });
+
 
   function createCard(cardId) {
     var front = document.createElement('div'),
@@ -69,7 +76,6 @@ $(document).on('turbolinks:load', function() {
       }
     }
   }
-
   function selectDifficulty(difficulty) {
     if(difficulty=='Easy') {
       gameCards = getCardsByDifficulty(4);
