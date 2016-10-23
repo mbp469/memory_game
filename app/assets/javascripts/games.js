@@ -2,10 +2,12 @@ $(document).on('turbolinks:load', function() {
   var counter = 0
   var height = $(window).height();
   var gameHeight = height + 'px';
+  var difficulty = ''
 
   $('.board-wrap').css('height', gameHeight);
 
   $(document).on('click', '.difficulty', function() {
+    difficulty = $(this).val();
     var level = $(this).val();
     var memoryCards = selectDifficulty(level); // num of cards
     var shuffledMemoryCards = shuffleMemoryCards(memoryCards);
@@ -40,8 +42,6 @@ $(document).on('turbolinks:load', function() {
     back.className = 'back';
     flipper.className = 'flipper';
     card.className = 'card';
-
-    console.log('hey nate');
 
     $(flipper).append(front, back);
     $(card).attr({'data-card-id': cardId, 'data-card-state': 'inactive'}).append(flipper);
@@ -80,6 +80,24 @@ $(document).on('turbolinks:load', function() {
     }
     if ($('#board-container').find('.card').length === $('[data-card-state=matched]').length) {
       console.log('you win!' + counter/2);
+      var score = 0
+      if (difficulty == 'Easy') {
+        score = 5
+      } else if (difficulty == 'Medium') {
+        score = 10
+      } else {
+        score = 15
+      }
+      $.ajax({
+        type: "POST",
+        url: '/game',
+        data: {
+          user_id: $('#board-container').attr('data-user-id'),
+          completeness: score,
+          turns_taken: counter/2,
+        },
+        dataType: json
+      });
     }
   }
   function selectDifficulty(difficulty) {

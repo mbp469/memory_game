@@ -7,4 +7,4 @@
   %input{:type=>'button', :class=>'difficulty', :value=>'Medium'}
   %input{:type=>'button', :class=>'difficulty', :value=>'Hard'}
 .board-wrap
-  #board-container
+  = tag("div", id: 'board-container', data: {user_id: @user.id})
