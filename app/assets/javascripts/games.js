@@ -21,7 +21,6 @@ $(document).on('turbolinks:load', function() {
     $('.card').on('click', handleCardClick);
   });
 
-
   function createCard(cardId) {
     var front = document.createElement('div'),
     back = document.createElement('div'),
@@ -52,7 +51,6 @@ $(document).on('turbolinks:load', function() {
     setTimeout(checkMatch, 500, activeCards);
   };
 
-
   function checkMatch(activeCards) {
     if (activeCards.length === 2) {
       if(activeCards[0].dataset.cardId === activeCards[1].dataset.cardId) {
@@ -69,6 +67,7 @@ $(document).on('turbolinks:load', function() {
       }
     }
   }
+
   function selectDifficulty(difficulty) {
     if(difficulty=='Easy') {
       gameCards = getCardsByDifficulty(4);
@@ -109,8 +108,3 @@ $(document).on('turbolinks:load', function() {
     return array;
   }
 });
-
-//run selectDifficulty('thedifficulty')
-//now all pairs exist for game, but in identical order
-//run shuffleMemoryCards(memoryCards)
-//now shuffledMemoryCards is in the order which to use in game
