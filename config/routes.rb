@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   # get 'login'  => 'users#new'
   resources :users
 
+  root 'games#index'
+
   get 'profile' => 'users#profile'
 
   get 'game' => 'games#index'
