@@ -19,7 +19,7 @@ $(document).on('turbolinks:load', function() {
       scrollTop: $(".board-wrap").offset().top
     }, 1000);
 
-    $('.card').on('click', handleCardClick);
+    var currentCard = $('.card').on('click', handleCardClick);
   });
 
   function createCard(cardId) {
@@ -32,6 +32,8 @@ $(document).on('turbolinks:load', function() {
     back.className = 'back';
     flipper.className = 'flipper';
     card.className = 'card';
+
+    console.log('hey nate');
 
     $(flipper).append(front, back);
     $(card).attr({'data-card-id': cardId, 'data-card-state': 'inactive'}).append(flipper);

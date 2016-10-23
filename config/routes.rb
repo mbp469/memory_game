@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
   delete 'login' => 'sessions#destroy'
 
+
+
   put 'profile' => 'users#edit'
 
   put 'leaderboard' => 'users#update'
