@@ -29564,7 +29564,6 @@ $(document).on('turbolinks:load', function() {
     return array;
   }
 });
-
 ;
 (function() {
     "use strict";
