@@ -21,7 +21,6 @@ $(document).on('turbolinks:load', function() {
     $('.card').on('click', handleCardClick);
   });
 
-
   function createCard(cardId) {
     var front = document.createElement('div'),
     back = document.createElement('div'),

@@ -3,12 +3,11 @@
   %head
     %meta(charset="UTF-8")
     %meta(content="width=device-width, initial-scale=1" name="viewport")
-    -# %link(rel='stylesheet'href='../src/js/vendor/jquery-ui.min.css')
-    -# %link(rel='stylesheet'href='../lib/styles/main.min.css')
     %link(href="https://fonts.googleapis.com/css?family=ABeeZee|Nunito" rel="stylesheet")
-    -# %link(href="../lib/styles/vendor/font-awesome-4.6.3/css/font-awesome.min.css" rel="stylesheet")
     %title UserDetails:MemoryGame
-  %body
+  %body.user-page
+  - games = [{name: 'Ragnar Lothbrok', score: '67'},{name: 'Lagertha Lothbrok', score: '98'}]
+  - userInfo = [{name: 'marian', email: 'none@none.com', password: 'pw', currentScore: '33'}]
     %header
       .h1-container
         %h1 The Game of Memory
@@ -19,30 +18,33 @@
 
         %aside#userpage-aside
           %nav
-            #goto-leaderboard(href="#") View Top Scores
-            #goto-game(href="#") Return To Game
+            %button#goto-scores.view-scores View Scores
+            %i.fa.fa-star
 
-
-        -# put dummy variables here
         %section#user-table
-          -# .table-cell
           #user-score-div
-            %h3 Your current total is 29 Points.
+            %h3
+              Current Total:
+              #total-points #{userInfo[0][:currentScore]}
           %ul#user-details
+            %li.user-name
+              %i#1.fa.fa-star
+              %input#user-name.input-user-info{readonly:true, type:"text", placeholder:"#{userInfo[0][:name]}"}
             %li.user-email
               %i#1.fa.fa-envelope
-              -# input fields will toggle readonly if edit button is pressed.
-              %input#email{readonly:true, type:"text", placeholder:"user@someemail.com"}
+              %input#email.input-user-info{readonly:true, placeholder:"#{userInfo[0][:email]}", type: "email"}
             %li.user-password
               %i#1.fa.fa-key
-              %input#password{readonly:true, type:"password"}
-            %li.user-twitter
-              %i#1.fa.fa-twitter
-              %input#twitter{readonly:true, type:"text", placeholder: "@twitterhandle"}
-            %li.user-facebook
-              %i#1.fa.fa-facebook-official
-              %input#facebook{readonly:true, type:"text", placeholder: "facebook/page/user"}
-              %button#user-details-edit Edit Your Information
-              -#  submit button will toggle hidden if edit button is pressed.
-              %button#user-details-submit.hidden Submit Changes
-              -# if password has changed, a pop-up box should make your re-type it to confirm
+              %input#password.input-user-info{readonly:true, type:"password", placeholder:"#{userInfo[0][:password]}"}
+            %button#user-details-edit.edit-user Edit Your Information
+
+            -# Section holding games and scores
+        %section.table#score-table.hidden
+          .table-cell
+          -unless games.empty?
+            %ul.leader#scores-ul
+              -(games).each do |game|
+              %li.entry
+                %i.fa.fa-star
+                %h3 #{game[:name]}
+                %span#1 #{game[:score]} points
