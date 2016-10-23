@@ -10,27 +10,21 @@ $(document).on('turbolinks:load', function() {
     var memoryCards = selectDifficulty(level);
     var shuffledMemoryCards = shuffleMemoryCards(memoryCards);
 
+    function buildGame() {
+      shuffledMemoryCards.forEach(function(cardId) {
+        createCard(cardId);
+      });
+      $('html, body').stop().animate({
+        scrollTop: $(".board-wrap").offset().top
+      }, 1000);
+      $('.card').on('click', handleCardClick);
+    }
+
     if ($('.card').length > 0) {
       $('#board-container').empty();
-      shuffledMemoryCards.forEach(function(cardId) {
-        createCard(cardId);
-      });
-
-      $('html, body').stop().animate({
-        scrollTop: $(".board-wrap").offset().top
-      }, 1000);
-
-      $('.card').on('click', handleCardClick);
+      buildGame();
     } else {
-      shuffledMemoryCards.forEach(function(cardId) {
-        createCard(cardId);
-      });
-
-      $('html, body').stop().animate({
-        scrollTop: $(".board-wrap").offset().top
-      }, 1000);
-
-      $('.card').on('click', handleCardClick);
+      buildGame();
     }
   });
 
