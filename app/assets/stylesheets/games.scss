@@ -73,6 +73,7 @@ $cardImages: 'dan.jpg', 'dana.png', 'jeff.jpg', 'bryce.jpg', 'nicole.jpeg', 'sam
   background-repeat: no-repeat;
   background-position: center;
   height: 100%;
+  opacity: .9;
 }
 
 .back {
@@ -87,6 +88,7 @@ $cardImages: 'dan.jpg', 'dana.png', 'jeff.jpg', 'bryce.jpg', 'nicole.jpeg', 'sam
   position: absolute;
   top: 0;
   left: 0;
+  opacity: .9;
 }
 
 .card, .flipper, .front, .back {
