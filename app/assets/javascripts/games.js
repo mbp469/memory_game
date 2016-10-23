@@ -5,21 +5,29 @@ $(document).on('turbolinks:load', function() {
 
   $('.board-wrap').css('height', gameHeight);
 
-  $(document).one('click', '.difficulty', function() {
+  $(document).on('click', '.difficulty', function() {
     var level = $(this).val();
-
-    var memoryCards = selectDifficulty(level);
+    var memoryCards = selectDifficulty(level); // num of cards
     var shuffledMemoryCards = shuffleMemoryCards(memoryCards);
 
-    shuffledMemoryCards.forEach(function(cardId) {
-      createCard(cardId);
-    });
+    function buildGame() {
+      shuffledMemoryCards.forEach(function(cardId) {
+        createCard(cardId);
+      });
 
-    $('html, body').stop().animate({
-      scrollTop: $(".board-wrap").offset().top
-    }, 1000);
+      $('html, body').stop().animate({
+        scrollTop: $(".board-wrap").offset().top
+      }, 1000);
+      $('.card').on('click', handleCardClick);
+    }
 
-    var currentCard = $('.card').on('click', handleCardClick);
+    if ($('.card').length > 0) {
+      $('#board-container').empty();
+      buildGame();
+    } else {
+      buildGame();
+    }
+    console.log($('.cards').length);
   });
 
   function createCard(cardId) {
@@ -52,11 +60,13 @@ $(document).on('turbolinks:load', function() {
     }
 
     var activeCards = $('[data-card-state=active]');
+
     setTimeout(checkMatch, 500, activeCards);
     console.log(counter); // counter that works - div by 2, send to score table via scores#win action
   };
 
   function checkMatch(activeCards) {
+    debugger;
     if (activeCards.length === 2) {
       if(activeCards[0].dataset.cardId === activeCards[1].dataset.cardId) {
         activeCards.off();
@@ -67,11 +77,12 @@ $(document).on('turbolinks:load', function() {
         $(activeCards[0]).find('.flipper').toggleClass('flip');
         activeCards[1].dataset.cardState = 'inactive';
         $(activeCards[1]).find('.flipper').toggleClass('flip');
-
       }
     }
+    if ($('#board-container').find('.card').length === $('[data-card-state=matched]').length) {
+      console.log('you win!' + counter/2);
+    }
   }
-
   function selectDifficulty(difficulty) {
     if(difficulty=='Easy') {
       gameCards = getCardsByDifficulty(4);
