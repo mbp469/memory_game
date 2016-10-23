@@ -6,6 +6,13 @@
   min-height: 500px;
   padding: 3vh;
 }
+#board-container,
+.board-wrap,
+.card,
+.flipper {
+  background: none;
+}
+
 html {
   height: 100%;
 }
@@ -47,7 +54,11 @@ html {
 
 .front {
   transform: rotateY(-180deg);
-  background: rgba(22, 162, 193, 0.95);
+  background: white;
+  background-image: url('Octocat.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   height: 100%;
 }
 
