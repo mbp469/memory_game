@@ -117,6 +117,7 @@ $cardImages: 'dan.jpg', 'dana.png', 'jeff.jpg', 'bryce.jpg', 'nicole.jpeg', 'sam
 .modal {
   display: none;
   position: absolute;
+  z-index: 9999;
 }
 .modal-content {
   display: flex;
