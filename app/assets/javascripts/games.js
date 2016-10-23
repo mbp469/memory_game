@@ -79,9 +79,19 @@ $(document).on('turbolinks:load', function() {
       }
     }
     if ($('#board-container').find('.card').length === $('[data-card-state=matched]').length) {
-      console.log('you win!' + counter/2);
+      var modal = document.getElementById('win-modal');
+      var attempts = document.getElementById('attempts');
+      $(attempts).text('You won in ' + counter/2 + ' attempts!');
+      modal.style.display = 'block';
     }
   }
+
+  $(document).on('click', '.play-again', function() {
+    var modal = document.getElementById('win-modal');
+    modal.style.display = 'none';
+    $('#board-container').empty();
+  });
+
   function selectDifficulty(difficulty) {
     if(difficulty=='Easy') {
       gameCards = getCardsByDifficulty(4);
