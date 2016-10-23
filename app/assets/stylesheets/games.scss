@@ -41,7 +41,7 @@ $cardImages: 'dan.jpg', 'dana.png', 'jeff.jpg', 'bryce.jpg', 'nicole.jpeg', 'sam
     $image: nth($cardImages, $index);
     &[data-card-id="#{$index}"] {
       .front {
-        background-image: url($image);
+        background-image: image_url($image);
       }
     }
   }
