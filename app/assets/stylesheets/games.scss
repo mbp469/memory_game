@@ -6,6 +6,13 @@
   min-height: 500px;
   padding: 3vh;
 }
+#board-container,
+.board-wrap,
+.card,
+.flipper {
+  background: none;
+}
+
 html {
   height: 100%;
 }
@@ -47,7 +54,11 @@ html {
 
 .front {
   transform: rotateY(-180deg);
-  background: rgba(22, 162, 193, 0.95);
+  background: white;
+  background-image: url('Octocat.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   height: 100%;
 }
 
@@ -55,7 +66,11 @@ html {
   transform: rotateY(0deg);
   height: 100%;
   width: 100%;
-  background: rgb(158, 46, 113);
+  background: white;
+  background-image: url('TIY.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   position: absolute;
   top: 0;
   left: 0;

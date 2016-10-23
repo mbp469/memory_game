@@ -3,10 +3,6 @@ $(document).on('turbolinks:load', function() {
   gameHeight = height + 'px';
   $('.board-wrap').css('height', gameHeight);
 
-  //.user-prompts + #difficulty-buttons
-
-
-
   $(document).one('click', '.difficulty', function() {
     var numCards = 1;
 
