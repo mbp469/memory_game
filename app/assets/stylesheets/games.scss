@@ -26,6 +26,8 @@ html {
   perspective: 500px;
 }
 
+$cardImages: 'dan.jpg', 'dana.png', 'jeff.jpg', 'sam.jpg', 'bryce.jpeg', 'nicole.jpg', 'back-end.png', 'front-end.png', 'python.png', 'html.png', 'design.png', 'mobile.png';
+
 .card {
   align-items: center;
   cursor: pointer;
@@ -33,7 +35,19 @@ html {
   width: 22%;
   perspective: 1000px;
   z-index: 50;
+
+
+  @for $index from 1 through length($cardImages) {
+    $image: nth($cardImages, $index);
+    &[data-card-id="#{$index}"] {
+      .front {
+        background-image: url($image);
+      }
+    }
+  }
 }
+
+
 
 .flipper {
   height: 100%;
@@ -55,7 +69,6 @@ html {
 .front {
   transform: rotateY(-180deg);
   background: white;
-  background-image: url('Octocat.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
