@@ -8,7 +8,7 @@
     %link(href="https://fonts.googleapis.com/css?family=ABeeZee|Nunito" rel="stylesheet")
     -# %link(href="../lib/styles/vendor/font-awesome-4.6.3/css/font-awesome.min.css" rel="stylesheet")
     %title UserDetails:MemoryGame
-  %body
+  %body.user-page
     %header
       .h1-container
         %h1 The Game of Memory
@@ -19,30 +19,48 @@
 
         %aside#userpage-aside
           %nav
-            #goto-leaderboard(href="#") View Top Scores
-            #goto-game(href="#") Return To Game
+            %button#goto-scores.view-scores View Scores
+            %i.fa.fa-star
 
 
-        -# put dummy variables here
+        -# put dummy variables for user info here
         %section#user-table
           -# .table-cell
           #user-score-div
-            %h3 Your current total is 29 Points.
+            %h3
+              Current Total:
+              #total-points 29
+            -# input fields will toggle readonly if edit button is pressed.
           %ul#user-details
+            %li.user-name
+              %i#1.fa.fa-star
+              %input#user-name.input-user-info{readonly:true, type:"text", placeholder: "User Name"}
             %li.user-email
               %i#1.fa.fa-envelope
-              -# input fields will toggle readonly if edit button is pressed.
-              %input#email{readonly:true, type:"text", placeholder:"user@someemail.com"}
+              %input#email.input-user-info{readonly:true, type:"text", placeholder:"user@someemail.com"}
             %li.user-password
               %i#1.fa.fa-key
-              %input#password{readonly:true, type:"password"}
-            %li.user-twitter
-              %i#1.fa.fa-twitter
-              %input#twitter{readonly:true, type:"text", placeholder: "@twitterhandle"}
-            %li.user-facebook
-              %i#1.fa.fa-facebook-official
-              %input#facebook{readonly:true, type:"text", placeholder: "facebook/page/user"}
-              %button#user-details-edit Edit Your Information
-              -#  submit button will toggle hidden if edit button is pressed.
-              %button#user-details-submit.hidden Submit Changes
-              -# if password has changed, a pop-up box should make your re-type it to confirm
+              %input#password.input-user-info{readonly:true, type:"password"}
+            %button#user-details-edit Edit Your Information
+            %button#user-details-submit.hidden Submit Changes
+
+        -# put dummy variables for score sheet here
+        %section.table#score-table.hidden
+          .table-cell
+            %ul.leader
+              %li.entry#1
+                %i#1.fa.fa-trophy
+                %h3#1 Person 1
+                %span#1 29 points
+              %li.entry#2
+                %i#2.fa.fa-bookmark
+                %h3#2 Person 2
+                %span#1 27 points
+              %li.entry#1
+                %i#1.fa.fa-bookmark
+                %h3#1 Person 3
+                %span#1 24 points
+              %li.entry#2
+                %i#2.fa.fa-bookmark
+                %h3#2 Person 4
+                %span#1 20 points
