@@ -108,3 +108,11 @@ $(document).on('turbolinks:load', function() {
     return array;
   }
 });
+<<<<<<< HEAD
+=======
+
+//run selectDifficulty('thedifficulty')
+//now all pairs exist for game, but in identical order
+//run shuffleMemoryCards(memoryCards)
+//now shuffledMemoryCards is in the order which to use in game
+>>>>>>> 68c08c5b63566343b1fe2a33a2c60193b3b45b43
