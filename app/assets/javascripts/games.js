@@ -1,4 +1,7 @@
 $(document).on('turbolinks:load', function() {
+  var height = $(window).height();
+  gameHeight = height + 'px';
+  $('.board-wrap').css('height', gameHeight);
 
   $(document).one('click', '.difficulty', createCards);
 
@@ -16,6 +19,11 @@ function createCards() {
   shuffledMemoryCards.forEach(function(card) {
     var cardId = card.id;
     assignCardIDs(cardId);
+
+    $('html, body').stop().animate({
+    scrollTop: $(".board-wrap").offset().top
+    }, 1000);
+
   });
 }
 

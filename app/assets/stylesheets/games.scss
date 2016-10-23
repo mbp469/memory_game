@@ -4,9 +4,18 @@
 .board-wrap {
   height: 100vh;
   min-height: 500px;
-  padding: 20px
+  padding: 3vh;
+}
+#board-container,
+.board-wrap,
+.card,
+.flipper {
+  background: none;
 }
 
+html {
+  height: 100%;
+}
 #board-container {
   display: flex;
   justify-content: space-around;
@@ -22,7 +31,6 @@
   cursor: pointer;
   margin: 0 0 2vh 0;
   width: 22%;
-  height: 25%;
   perspective: 1000px;
   z-index: 50;
 }
@@ -30,7 +38,7 @@
 .flipper {
   height: 100%;
   transform-style: preserve-3d;
-  transition: 3s ease-in-out;
+  transition: 1s ease-in-out;
   width: 100%;
   &.flip {
     transform: rotateY(180deg);
@@ -46,7 +54,11 @@
 
 .front {
   transform: rotateY(-180deg);
-  background: rgba(22, 162, 193, 0.95);
+  background: white;
+  background-image: url('Octocat.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   height: 100%;
 }
 
@@ -54,7 +66,11 @@
   transform: rotateY(0deg);
   height: 100%;
   width: 100%;
-  background: rgb(158, 46, 113);
+  background: white;
+  background-image: url('TIY.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   position: absolute;
   top: 0;
   left: 0;
@@ -62,7 +78,7 @@
 
 .card, .flipper, .front, .back {
   border-radius: 25px;
-  height: 200px;
+  flex-shrink: 1;
 }
 
 #difficulty-buttons {
