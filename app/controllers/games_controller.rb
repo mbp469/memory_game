@@ -1,4 +1,3 @@
-##########DELETE?############
 class GamesController < ApplicationController
   before_action :require_user, only: [:index, :show]
 
@@ -6,5 +5,6 @@ class GamesController < ApplicationController
   end
 
   def leaderboard
+    @users = User.all
   end
 end

@@ -1,4 +1,5 @@
 $(document).on('turbolinks:load', function() {
+  var counter = 0
   var height = $(window).height();
   var gameHeight = height + 'px';
 
@@ -51,6 +52,7 @@ $(document).on('turbolinks:load', function() {
   }
 
   function handleCardClick() {
+    counter++
     var state = $(this).attr('data-card-state');
     $(this).find('.flipper').toggleClass('flip');
 
@@ -62,6 +64,7 @@ $(document).on('turbolinks:load', function() {
 
     var activeCards = $('[data-card-state=active]');
     setTimeout(checkMatch, 500, activeCards);
+    console.log(counter); // counter that works - div by 2, send to score table via scores#win action
   };
 
   function checkMatch(activeCards) {
