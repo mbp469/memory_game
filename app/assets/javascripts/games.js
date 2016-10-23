@@ -82,10 +82,11 @@ $(document).on('turbolinks:load', function() {
       console.log('you win! ' + counter/2 + ' tries.');
       allGames.push(scoreRound());
       storage.set();
-      console.log(allGames);
+      console.log(localStorage);
       var modal = document.getElementById('win-modal');
       var attempts = document.getElementById('attempts');
       $(attempts).text('You won in ' + counter/2 + ' attempts!');
+      counter = 0;
       modal.style.display = 'block';
     }
   }
@@ -121,7 +122,7 @@ $(document).on('turbolinks:load', function() {
     modal.style.display = 'none';
     $('#board-container').empty();
   });
-  
+
   function selectDifficulty(difficulty) {
     if(difficulty=='Easy') {
       gameCards = getCardsByDifficulty(4);
