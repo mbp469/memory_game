@@ -24,12 +24,26 @@
   $('#user-details-edit').on('click',function(event){
     console.log('user-details-edit');
     var button = $(this);
-    if(button.hasClass('hidden')) {
-      $('')
-    }
-    if()
-
+    var userObject = respondToEdit(button);
+    console.log(userObject);
+    return userObject;
   });
+
+      /* helper function called in the event listener for the edit user details button */
+      function respondToEdit(button) {
+        var userObject = {};
+        if(button.hasClass('edit-user')) {
+          $('.input-user-info').attr('readonly', false);
+          $('#user-details-edit').text('Submit Changes');
+        } else {
+          userObject.name = $('#user-name').val();
+          userObject.email = $('#email').val();
+          userObject.password = $('#password').val();
+          $('#user-details-edit').attr('readonly', true);
+        }
+        button.toggleClass('edit-user');
+        return userObject;
+      }
 
   /* When #user-details-submit is clicked, send updated info to backend. */
   $('#user-details-submit').on('click', function(event){

@@ -37,12 +37,11 @@
               %input#user-name.input-user-info{readonly:true, type:"text", placeholder: "User Name"}
             %li.user-email
               %i#1.fa.fa-envelope
-              %input#email.input-user-info{readonly:true, type:"text", placeholder:"user@someemail.com"}
+              %input#email.input-user-info{readonly:true, placeholder:"user@someemail.com", type: "email"}
             %li.user-password
               %i#1.fa.fa-key
               %input#password.input-user-info{readonly:true, type:"password"}
-            %button#user-details-edit Edit Your Information
-            %button#user-details-submit.hidden Submit Changes
+            %button#user-details-edit.edit-user Edit Your Information
 
         -# put dummy variables for score sheet here
         %section.table#score-table.hidden
