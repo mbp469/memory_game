@@ -83,35 +83,45 @@ $(document).on('turbolinks:load', function() {
       allGames.push(scoreRound());
       storage.set();
       console.log(allGames);
+      var modal = document.getElementById('win-modal');
+      var attempts = document.getElementById('attempts');
+      $(attempts).text('You won in ' + counter/2 + ' attempts!');
+      modal.style.display = 'block';
     }
   }
 
   function scoreRound() {
     switch (level) {
       case 'Easy':
-        if (counter/2 < 4) {
-          return 10;
-        } else {
-          return 5;
-        }
-        break;
+      if (counter/2 < 4) {
+        return 10;
+      } else {
+        return 5;
+      }
+      break;
       case 'Medium':
       if (counter/2 < 8) {
         return 20;
       } else {
         return 10;
       }
-        break;
+      break;
       case 'Hard':
       if (counter/2 < 12) {
         return 30;
       } else {
         return 15;
       }
-        break;
+      break;
     }
   }
 
+  $(document).on('click', '.play-again', function() {
+    var modal = document.getElementById('win-modal');
+    modal.style.display = 'none';
+    $('#board-container').empty();
+  });
+  
   function selectDifficulty(difficulty) {
     if(difficulty=='Easy') {
       gameCards = getCardsByDifficulty(4);
