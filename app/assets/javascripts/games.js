@@ -2,18 +2,20 @@ $(document).on('turbolinks:load', function() {
   var counter = 0
   var height = $(window).height();
   var gameHeight = height + 'px';
+  var level;
 
   $('.board-wrap').css('height', gameHeight);
 
   $(document).on('click', '.difficulty', function() {
-    var level = $(this).val();
-    var memoryCards = selectDifficulty(level);
+    level = $(this).val();
+    var memoryCards = selectDifficulty(level); // num of cards
     var shuffledMemoryCards = shuffleMemoryCards(memoryCards);
 
     function buildGame() {
       shuffledMemoryCards.forEach(function(cardId) {
         createCard(cardId);
       });
+
       $('html, body').stop().animate({
         scrollTop: $(".board-wrap").offset().top
       }, 1000);
@@ -26,8 +28,8 @@ $(document).on('turbolinks:load', function() {
     } else {
       buildGame();
     }
+    console.log($('.cards').length);
   });
-
 
   function createCard(cardId) {
     var front = document.createElement('div'),
@@ -39,6 +41,7 @@ $(document).on('turbolinks:load', function() {
     back.className = 'back';
     flipper.className = 'flipper';
     card.className = 'card';
+
 
     $(flipper).append(front, back);
     $(card).attr({'data-card-id': cardId, 'data-card-state': 'inactive'}).append(flipper);
@@ -57,6 +60,7 @@ $(document).on('turbolinks:load', function() {
     }
 
     var activeCards = $('[data-card-state=active]');
+
     setTimeout(checkMatch, 500, activeCards);
     console.log(counter); // counter that works - div by 2, send to score table via scores#win action
   };
@@ -72,10 +76,42 @@ $(document).on('turbolinks:load', function() {
         $(activeCards[0]).find('.flipper').toggleClass('flip');
         activeCards[1].dataset.cardState = 'inactive';
         $(activeCards[1]).find('.flipper').toggleClass('flip');
-
       }
     }
+    if ($('#board-container').find('.card').length === $('[data-card-state=matched]').length) {
+      console.log('you win! ' + counter/2 + ' tries.');
+      allGames.push(scoreRound());
+      storage.set();
+      console.log(allGames);
+    }
   }
+
+  function scoreRound() {
+    switch (level) {
+      case 'Easy':
+        if (counter/2 < 4) {
+          return 10;
+        } else {
+          return 5;
+        }
+        break;
+      case 'Medium':
+      if (counter/2 < 8) {
+        return 20;
+      } else {
+        return 10;
+      }
+        break;
+      case 'Hard':
+      if (counter/2 < 12) {
+        return 30;
+      } else {
+        return 15;
+      }
+        break;
+    }
+  }
+
   function selectDifficulty(difficulty) {
     if(difficulty=='Easy') {
       gameCards = getCardsByDifficulty(4);
@@ -115,4 +151,21 @@ $(document).on('turbolinks:load', function() {
     }
     return array;
   }
+/*******************LOCAL STORAGE********************************/
+
+  /* allGames is an array of game scores for a session */
+  let allGames = [];
+const storage = {
+  set() {
+    localStorage.setItem("games", JSON.stringify(allGames));
+  },
+  get() {
+    var games = localStorage.games === undefined ?
+      false :
+      JSON.parse(localStorage.games);
+    return games;
+  },
+};
+
+
 });
