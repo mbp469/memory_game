@@ -7,7 +7,7 @@
   /* When #goto-scores is clicked, hide #user-table, show #score-table...
   change #goto-scores text to 'See User Details' */
 
-  $('#goto-scores').on('click', function(event){
+  $(document).on('click', '#goto-scores', function(event){
     var button = $(this);
     if(button.hasClass('view-scores'))
     {
@@ -22,9 +22,8 @@
   });
 
   /* When #user-details-edit is clicked, .input-user-info becomes readonly:false */
-  $('#user-details-edit').on('click',function(event){
+  $(document).on('click','#user-details-edit', function(event){
 
-    console.log('user-details-edit');
     var button = $(this);
     var userObject = respondToEdit(button);
     console.log(userObject);

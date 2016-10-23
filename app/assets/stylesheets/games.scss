@@ -69,7 +69,7 @@ $cardImages: 'dan.jpg', 'dana.png', 'jeff.jpg', 'sam.jpg', 'bryce.jpeg', 'nicole
 .front {
   transform: rotateY(-180deg);
   background: white;
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   height: 100%;
