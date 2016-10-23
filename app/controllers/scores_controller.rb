@@ -1,4 +1,4 @@
 class ScoresController < ApplicationController
-  # def win
-  # end
+  def create
+  end
 end
