@@ -3,12 +3,10 @@
   %head
     %meta(charset="UTF-8")
     %meta(content="width=device-width, initial-scale=1" name="viewport")
-    -# %link(rel='stylesheet'href='../src/js/vendor/jquery-ui.min.css')
-    -# %link(rel='stylesheet'href='../lib/styles/main.min.css')
     %link(href="https://fonts.googleapis.com/css?family=ABeeZee|Nunito" rel="stylesheet")
-    -# %link(href="../lib/styles/vendor/font-awesome-4.6.3/css/font-awesome.min.css" rel="stylesheet")
     %title UserDetails:MemoryGame
   %body.user-page
+  - games = [{name: 'Ragnar Lothbrok', score: '67'},{name: 'Lagertha Lothbrok', score: '98'}]
     %header
       .h1-container
         %h1 The Game of Memory
@@ -43,23 +41,13 @@
               %input#password.input-user-info{readonly:true, type:"password"}
             %button#user-details-edit.edit-user Edit Your Information
 
-        -# put dummy variables for score sheet here
+            -# Section holding games and scores
         %section.table#score-table.hidden
           .table-cell
-            %ul.leader
-              %li.entry#1
-                %i#1.fa.fa-trophy
-                %h3#1 Person 1
-                %span#1 29 points
-              %li.entry#2
-                %i#2.fa.fa-bookmark
-                %h3#2 Person 2
-                %span#1 27 points
-              %li.entry#1
-                %i#1.fa.fa-bookmark
-                %h3#1 Person 3
-                %span#1 24 points
-              %li.entry#2
-                %i#2.fa.fa-bookmark
-                %h3#2 Person 4
-                %span#1 20 points
+          -unless games.empty?
+            %ul.leader#scores-ul
+              -(games).each do |game|
+              %li.entry
+                %i.fa.fa-star
+                %h3 #{game[:name]}
+                %span#1 #{game[:score]} points

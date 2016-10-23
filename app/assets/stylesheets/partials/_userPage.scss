@@ -1,17 +1,22 @@
 .user-page {
-  background: none;
+    background: none;
 }
 
 #userpage-container {
     position: relative;
     text-align: center;
+
     #userpage-title {
-    box-shadow: 0px 4px 9px black;
-      h2 {
-      color: $backgroundColor;
-      background: $darkBrown;
+        box-shadow: 0 4px 9px black;
+
+        h2 {
+            color: $backgroundColor;
+            background: $darkBrown;
+        }
     }
-      }
+}
+.fa-star {
+  animation: twinkle 1s infinite;
 }
 
 #userpage-aside {
@@ -19,7 +24,8 @@
     height: 75vh;
     width: 26%;
     position: relative;
-    box-shadow: 0px 0px 17px black;
+    box-shadow: 0 0 17px black;
+
     nav {
         height: 68vh;
         background: #423B35;
@@ -28,15 +34,15 @@
         flex-direction: column;
         justify-content: space-between;
         border-radius: 3px;
+
         .fa-star {
-          position: absolute;
-          background: $darkBrown;
-          color: $backgroundColor;
-          top: 39vh;
-          font-size: 6em;
-          left: 36%;
-          text-shadow: 0px 0px 15px $black;
-          animation: twinkle 1s infinite;
+            position: absolute;
+            background: $darkBrown;
+            color: $backgroundColor;
+            top: 39vh;
+            font-size: 6em;
+            left: 36%;
+            text-shadow: 0 0 15px $black;
         }
 
         #goto-scores {
@@ -61,7 +67,6 @@
                 background: $brown;
                 background: linear-gradient(to bottom, $brown 50%, $backgroundShadow 100%);
 
-
                 &:active {
                     width: 71%;
                     height: 26%;
@@ -73,126 +78,143 @@
 }
 
 #user-table {
-  display: flex;
-  flex-direction: column;
-  width: 74%;
-  height: 70vh;}
-#user-score-div {
-  display: flex;
-  justify-content: center;
-  h3 {
-    margin: 3% 0%;
-    padding: 0% 2%;
-    font-size: 1.5em;
-    div {
-      background: $backgroundColor;
-      display: inline-block;
-      transition: all 1s ease-in-out;
-      font-size: 1.75em;
-      border-radius: 8px;
-      padding: 0% 4%;
-      animation: pulse 0.5s 1s ease 2;
-      }
-  }
+    display: flex;
+    flex-direction: column;
+    width: 74%;
+    height: 70vh;
 }
+
+#user-score-div {
+    display: flex;
+    justify-content: center;
+
+    h3 {
+        margin: 3% 0;
+        padding: 0 2%;
+        font-size: 1.5em;
+
+        div {
+            background: $backgroundColor;
+            display: inline-block;
+            transition: all 1s ease-in-out;
+            font-size: 1.75em;
+            border-radius: 8px;
+            padding: 0 4%;
+            animation: pulse 0.5s 1s ease 2;
+        }
+    }
+}
+
 #user-details {
-  list-style: none;
-  margin: 10% 5%;
-  box-shadow: 0px 0px 29px $black;
-  position: relative;
-  top: 10vh;
-  li {
-    line-height: 3em;
-    background: $darkBrown;
+    list-style: none;
+    margin: 10% 5%;
+    box-shadow: 0 0 29px $black;
     position: relative;
-    display: block;
-    i {
-      background: $darkBrown;
-      color: $backgroundColor;
-      font-size: 1.25em;
-      margin: 0% 1%;
-    }
-    input {
-      width: 37%;
-      height: 11vh;
-      margin: 1% 0%;
-      font-size: 1.5em;
-      text-align: center;
-      outline: 0;
-      &:focus {
-        background: $backgroundShadow;
-        color: $darkBrown;
-      }
-    }
-  }
-  button {
-    margin: 3% 3%;
-    line-height: 3em;
-    font-size: 1em;
-    border-radius: 16px;
-    height: 14vh;
-    width: 23%;
-    outline: none;
-    box-shadow: 1px 6px 6px $darkBrown;
-    background: linear-gradient(to bottom, $backgroundColor 50%, $backgroundShadow 100%);
-    &:hover {
-      background: $darkBrown;
-      color: $backgroundColor;
-      background: linear-gradient(to bottom, $backgroundShadow 50%, $backgroundColor 100%);
-    }
-    &:active {
-      box-shadow: 0px 2px 5px $backgroundColor;
-      height: 14.5vh;
-      width: 23.2%;
-      transform: translate(2px, 2px);
+    top: 10vh;
 
+    li {
+        line-height: 3em;
+        background: $darkBrown;
+        position: relative;
+        display: block;
+
+        i {
+            background: $darkBrown;
+            color: $backgroundColor;
+            font-size: 1.25em;
+            margin: 0 1%;
+        }
+
+        input {
+            width: 37%;
+            height: 11vh;
+            margin: 1% 0;
+            font-size: 1.5em;
+            text-align: center;
+            outline: 0;
+
+            &:focus {
+                background: $backgroundShadow;
+                color: $darkBrown;
+            }
+        }
     }
 
+    button {
+        margin: 3%;
+        line-height: 3em;
+        font-size: 1em;
+        border-radius: 16px;
+        height: 14vh;
+        width: 23%;
+        outline: none;
+        box-shadow: 1px 6px 6px $darkBrown;
+        background: linear-gradient(to bottom, $backgroundColor 50%, $backgroundShadow 100%);
 
-  }
+        &:hover {
+            background: $darkBrown;
+            color: $backgroundColor;
+            background: linear-gradient(to bottom, $backgroundShadow 50%, $backgroundColor 100%);
+        }
+
+        &:active {
+            box-shadow: 0 2px 5px $backgroundColor;
+            height: 14.5vh;
+            width: 23.2%;
+            transform: translate(2px, 2px);
+        }
+    }
 }
 
 .hidden {
-  visibility: hidden;
+    visibility: hidden;
 }
 
 #score-table {
+    background: none;
+    width: 65%;
+    position: absolute;
+    top: 0;
+    right: 4%;
+
+    .table-cell {
+        width: 58%;
+        height: 0;
+        position: relative;
+        top: -67vh;
+        right: -34%;
+        padding: 3%;
+        background: none;
+
+    }
+}
+#scores-ul {
   background: none;
-  .table-cell {
-    width: 58%;
-    height: 0vh;
-    position: relative;
-    top: -67vh;
-    right: -34%;
-    padding: 3% 3%;
-  }
 }
 @keyframes pulse {
     0% {
-      background: $red;
-      color: $backgroundColor;
+        background: $red;
+        color: $backgroundColor;
     }
 
     100% {
-      background: $backgroundColor;
-      color: $darkBrown;
+        background: $backgroundColor;
+        color: $darkBrown;
     }
 }
 @keyframes twinkle {
-  0% {
-    color: $backgroundShadow;
-    text-shadow: 0px 0px 16px $yellowGreen;
+    0% {
+        color: $backgroundShadow;
+        text-shadow: 0 0 16px $yellowGreen;
+    }
 
-  }
-  50% {
-    color: $backgroundColor;
-    text-shadow: 0px 0px 16px $brightGreen;
+    50% {
+        color: $backgroundColor;
+        text-shadow: 0 0 16px $brightGreen;
+    }
 
-  }
-  100% {
-    color: $backgroundShadow;
-    text-shadow: 0px 0px 16px $yellowGreen;
-
-  }
-
+    100% {
+        color: $backgroundShadow;
+        text-shadow: 0 0 16px $yellowGreen;
+    }
 }

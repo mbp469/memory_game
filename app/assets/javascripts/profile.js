@@ -13,7 +13,8 @@
     {
       $('#goto-scores').text('See User Details').toggleClass('view-scores');
     } else {
-      button.addClass('view-scores');
+      button.addClass('view-scores').text('View Scores');
+
     }
     $('#user-table').toggleClass('hidden');
     $('#score-table').toggleClass('hidden');
@@ -26,7 +27,7 @@
     var button = $(this);
     var userObject = respondToEdit(button);
     console.log(userObject);
-    return userObject;
+//TODO send userObject to backend to update records.
   });
 
       /* helper function called in the event listener for the edit user details button */
@@ -35,20 +36,19 @@
         if(button.hasClass('edit-user')) {
           $('.input-user-info').attr('readonly', false);
           $('#user-details-edit').text('Submit Changes');
+          button.toggleClass('edit-user');
         } else {
           userObject.name = $('#user-name').val();
           userObject.email = $('#email').val();
           userObject.password = $('#password').val();
-          $('#user-details-edit').attr('readonly', true);
+          $('.input-user-info').attr('readonly', true);
+          $('#user-details-edit').text('Edit User');
+          button.toggleClass('edit-user');
+          return userObject;
         }
-        button.toggleClass('edit-user');
-        return userObject;
       }
 
-  /* When #user-details-submit is clicked, send updated info to backend. */
-  $('#user-details-submit').on('click', function(event){
-    console.log('user-details-submit');
-  })
+
 
 }); //end of $(document).ready function
 })(); //end of anonymous function
