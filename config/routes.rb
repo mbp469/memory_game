@@ -14,7 +14,14 @@ Rails.application.routes.draw do
 
   post 'login' => 'sessions#create'
 
-  delete 'logout' => 'sessions#destroy'
+  delete 'login' => 'sessions#destroy'
+
+  put 'profile' => 'users#edit'
+
+  put 'leaderboard' => 'users#update'
+
+  post 'game' => 'scores#win'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :games
