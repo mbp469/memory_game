@@ -1,50 +1,42 @@
-!!! 5
-%html(lang='en' id="leaderboard")
-  %head
-    %meta(charset="UTF-8")
-    %meta(content="width=device-width, initial-scale=1" name="viewport")
-    %link(href="https://fonts.googleapis.com/css?family=ABeeZee|Nunito" rel="stylesheet")
-    %title UserDetails:MemoryGame
-  %body.user-page
-  - games = [{name: 'Ragnar Lothbrok', score: '67'},{name: 'Lagertha Lothbrok', score: '98'}]
-  - userInfo = [{name: 'marian', email: 'none@none.com', password: 'pw', currentScore: '33'}]
-    %header
-      .h1-container
-        %h1 The Game of Memory
-      #userpage-container
-        #userpage-title
-          %h2
-            Welcome, User!
+- games = [{gameNum: '1', score: '67'},{gameNum: '2', score: '98'}]
+- userInfo = [{name: 'marian', email: 'none@none.com', password: 'pw', currentScore: '33'}]
+  %header
+    .h1-container
+      %h1 The Game of Memory
+    #userpage-container
+      #userpage-title
+        %h2
+          Welcome, User!
 
-        %aside#userpage-aside
-          %nav
-            %button#goto-scores.view-scores View Scores
-            %i.fa.fa-star
+      %aside#userpage-aside
+        %nav
+          %button#goto-scores.view-scores View Scores
+          %i.fa.fa-star
 
-        %section#user-table
-          #user-score-div
-            %h3
-              Current Total:
-              #total-points #{userInfo[0][:currentScore]}
-          %ul#user-details
-            %li.user-name
-              %i#1.fa.fa-star
-              %input#user-name.input-user-info{readonly:true, type:"text", placeholder:"#{userInfo[0][:name]}"}
-            %li.user-email
-              %i#1.fa.fa-envelope
-              %input#email.input-user-info{readonly:true, placeholder:"#{userInfo[0][:email]}", type: "email"}
-            %li.user-password
-              %i#1.fa.fa-key
-              %input#password.input-user-info{readonly:true, type:"password", placeholder:"#{userInfo[0][:password]}"}
-            %button#user-details-edit.edit-user Edit Your Information
+      %section#user-table
+        #user-score-div
+          %h3
+            Current Total:
+            #total-points #{userInfo[0][:currentScore]}
+        %ul#user-details
+          %li.user-name
+            %i#1.fa.fa-star
+            %input#user-name.input-user-info{readonly:true, type:"text", placeholder:"#{userInfo[0][:name]}"}
+          %li.user-email
+            %i#1.fa.fa-envelope
+            %input#email.input-user-info{readonly:true, placeholder:"#{userInfo[0][:email]}", type: "email"}
+          %li.user-password
+            %i#1.fa.fa-key
+            %input#password.input-user-info{readonly:true, type:"password", placeholder:"#{userInfo[0][:password]}"}
+          %button#user-details-edit.edit-user Edit Your Information
 
-            -# Section holding games and scores
-        %section.table#score-table.hidden
-          .table-cell
-          -unless games.empty?
-            %ul.leader#scores-ul
-              -(games).each do |game|
-              %li.entry
-                %i.fa.fa-star
-                %h3 #{game[:name]}
-                %span#1 #{game[:score]} points
+          -# Section holding games and scores
+      %section.table#score-table.hidden
+        .table-cell
+        -unless games.empty?
+          %ul.leader#scores-ul
+            -(games).each do |game|
+            %li.entry
+              %i.fa.fa-star
+              %h3 Game Number #{game[:gameNum]}
+              %span#1 #{game[:score]} Points
