@@ -5,5 +5,6 @@ class GamesController < ApplicationController
   end
 
   def leaderboard
+    @users = User.all
   end
 end
