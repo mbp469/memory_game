@@ -66,7 +66,6 @@ $(document).on('turbolinks:load', function() {
   };
 
   function checkMatch(activeCards) {
-    debugger;
     if (activeCards.length === 2) {
       if(activeCards[0].dataset.cardId === activeCards[1].dataset.cardId) {
         activeCards.off();
