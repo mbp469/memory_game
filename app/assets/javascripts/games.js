@@ -1,149 +1,114 @@
 $(document).on('turbolinks:load', function() {
   var height = $(window).height();
-  gameHeight = height + 'px';
+  var gameHeight = height + 'px';
+
   $('.board-wrap').css('height', gameHeight);
 
-  $(document).one('click', '.difficulty', createCards);
+  $(document).one('click', '.difficulty', function() {
+    var level = $(this).val();
 
-  $(document).on('click', '.card', function() {
-    $(this).find('.flipper').toggleClass('flip');
-  });
-});
+    var memoryCards = selectDifficulty(level);
+    var shuffledMemoryCards = shuffleMemoryCards(memoryCards);
 
-function createCards() {
-  var level = $(this).val();
-
-  selectDifficulty(level);
-  shuffleMemoryCards(memoryCards);
-
-  shuffledMemoryCards.forEach(function(card) {
-    var cardId = card.id;
-    assignCardIDs(cardId);
+    shuffledMemoryCards.forEach(function(cardId) {
+      createCard(cardId);
+    });
 
     $('html, body').stop().animate({
-    scrollTop: $(".board-wrap").offset().top
+      scrollTop: $(".board-wrap").offset().top
     }, 1000);
 
+    $('.card').on('click', handleCardClick);
   });
-}
 
-function assignCardIDs(id) {
-  var front = document.createElement('div'),
-  back = document.createElement('div'),
-  flipper = document.createElement('div'),
-  card = document.createElement('div');
 
-  front.className = 'front';
-  back.className = 'back';
-  flipper.className = 'flipper';
-  card.className = 'card';
+  function createCard(cardId) {
+    var front = document.createElement('div'),
+    back = document.createElement('div'),
+    flipper = document.createElement('div'),
+    card = document.createElement('div');
 
-  $(flipper).append(front, back);
-  $(card).attr('id', id).append(flipper);
-  $('#board-container').append(card);
-}
+    front.className = 'front';
+    back.className = 'back';
+    flipper.className = 'flipper';
+    card.className = 'card';
 
-var memoryCards = [];
-var shuffledMemoryCards = [];
-
-function selectDifficulty(difficulty) {
-  if (difficulty=='Easy') {
-    gameCards = getCardsByDifficulty(cards, 4);
-  } else if (difficulty=='Medium') {
-    gameCards = getCardsByDifficulty(cards, 8);
-  } else if (difficulty=='Hard') {
-    gameCards = cards;
+    $(flipper).append(front, back);
+    $(card).attr({'data-card-id': cardId, 'data-card-state': 'inactive'}).append(flipper);
+    $('#board-container').append(card);
   }
 
-  memoryCards = gameCards.concat(gameCards)
-}
+  function handleCardClick() {
+    var state = $(this).attr('data-card-state');
+    $(this).find('.flipper').toggleClass('flip');
 
-function getCardsByDifficulty(cardsArray, neededNumberOfPairs) {
-  var cardsNoDuplicates = [];
+    if (state === 'inactive') {
+      $(this).attr('data-card-state', 'active');
+    } else if (state === 'active') {
+      $(this).attr('data-card-state', 'inactive');
+    }
 
-  while (cardsNoDuplicates.length < neededNumberOfPairs) {
-    cardsNoDuplicates.push(cardsArray[Math.floor(Math.random()*cardsArray.length)]);
-    var uniqueMemoryCards = cardsNoDuplicates.filter(eliminateDuplicates)
-    cardsNoDuplicates = uniqueMemoryCards
+    var activeCards = $('[data-card-state=active]');
+    setTimeout(checkMatch, 500, activeCards);
+  };
+
+
+  function checkMatch(activeCards) {
+    if (activeCards.length === 2) {
+      if(activeCards[0].dataset.cardId === activeCards[1].dataset.cardId) {
+        activeCards.off();
+        activeCards[0].dataset.cardState = 'matched';
+        activeCards[1].dataset.cardState = 'matched';
+        console.log('match');
+      } else {
+        activeCards[0].dataset.cardState = 'inactive';
+        $(activeCards[0]).find('.flipper').toggleClass('flip');
+        activeCards[1].dataset.cardState = 'inactive';
+        $(activeCards[1]).find('.flipper').toggleClass('flip');
+
+      }
+    }
   }
-  return uniqueMemoryCards;
-}
-
-function shuffleMemoryCards(cardsArray) {
-  shuffledMemoryCards = this.shuffle(cardsArray);
-}
-
-function eliminateDuplicates(element, index, self) {
-  return index == self.indexOf(element);
-}
-
-// Fisher-Yates Algorithm
-function shuffle(array) {
-  var counter = array.length, temp, index;
-
-  while (counter > 0) {
-    index = Math.floor(Math.random() * counter);
-
-    counter--;
-
-    temp = array[counter];
-    array[counter] = array[index];
-    array[index] = temp;
+  function selectDifficulty(difficulty) {
+    if(difficulty=='Easy') {
+      gameCards = getCardsByDifficulty(4);
+    } else if(difficulty=='Medium') {
+      gameCards = getCardsByDifficulty(8);
+    } else if(difficulty=='Hard') {
+      gameCards = getCardsByDifficulty(12);
+    }
+    return gameCards.concat(gameCards);
   }
 
-  return array;
-}
+  function getCardsByDifficulty(neededNumberPairs) {
+    var cardsByDifficulty = [];
 
-var cards = [
-  {
-    img: "https://",
-    id: 1,
-  },
-  {
-    img: "https://",
-    id: 2
-  },
-  {
-    img: "https://",
-    id: 3
-  },
-  {
-    img: "https://",
-    id: 4
-  },
-  {
-    img: "https://",
-    id: 5
-  },
-  {
-    img: "https://",
-    id: 6
-  },
-  {
-    img: "https://",
-    id: 7
-  },
-  {
-    img: "https://",
-    id: 8
-  },
-  {
-    img: "https://",
-    id: 9
-  },
-  {
-    img: "https://",
-    id: 10
-  },
-  {
-    img: "https://",
-    id: 11
-  },
-  {
-    img: "https://",
-    id: 12
-  },
-];
+    for (var i = 1; i <= neededNumberPairs; i++) {
+      cardsByDifficulty.push(i);
+    }
+    return cardsByDifficulty;
+  }
+
+  function shuffleMemoryCards(cardsArray) {
+    return shuffle(cardsArray);
+  }
+
+  // Fisher-Yates Algorithm
+  function shuffle(array) {
+    var counter = array.length, temp, index;
+
+    while (counter > 0) {
+      index = Math.floor(Math.random() * counter);
+
+      counter--;
+
+      temp = array[counter];
+      array[counter] = array[index];
+      array[index] = temp;
+    }
+    return array;
+  }
+});
 
 //run selectDifficulty('thedifficulty')
 //now all pairs exist for game, but in identical order
