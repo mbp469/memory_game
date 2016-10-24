@@ -20,7 +20,11 @@
 @import "jquery-ui";
 
 @import "main";
-@import "users";
-@import "boards";
 @import "games";
 @import "sessions";
+
+@import 'partials/leaderBoard'; /* -marian */
+@import 'partials/userPage';
+@import 'partials/header';
+@import 'partials/modal';
+@import 'partials/cardImages';
