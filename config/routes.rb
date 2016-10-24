@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   put 'profile' => 'users#edit'
 
-  put 'leaderboard' => 'users#update'
+  get 'leaderboard' => 'games#score'
 
   post 'game' => 'scores#win'
 

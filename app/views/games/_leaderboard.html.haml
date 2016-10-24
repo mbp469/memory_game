@@ -1,6 +1,6 @@
 %ul.leader
   - @users.each do |user|
-    %li.entry#1
+    = tag("li", id: 'entry#1', data: {user_id: user.id})
       %i#1.fa.fa-trophy
       %h3#1 #{user.username}
-      %span#1 29 points
+      %span#1 #{@scores} points

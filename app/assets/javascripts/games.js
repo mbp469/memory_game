@@ -87,10 +87,8 @@ $(document).on('turbolinks:load', function() {
           turns_taken: counter/2,
         },
       });
-      console.log('you win! ' + counter/2 + ' tries.');
       allGames.push(scoreRound());
       storage.set();
-      console.log(localStorage);
       var modal = document.getElementById('win-modal');
       var attempts = document.getElementById('attempts');
       $(attempts).text('You won in ' + counter/2 + ' attempts!');
