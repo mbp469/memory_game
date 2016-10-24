@@ -18,8 +18,6 @@ Rails.application.routes.draw do
 
   put 'profile' => 'users#edit'
 
-  get 'leaderboard' => 'games#score'
-
   post 'game' => 'scores#win'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

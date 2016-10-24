@@ -17,7 +17,11 @@
         #user-score-div
           %h3
             Current Total:
-            #total-points #{userInfo[0][:currentScore]}
+            #total-points
+              - sum = 0
+              - (@scores.where(:user_id => @user.id)).each do |score|
+                - sum += score.completeness
+              = sum
         %ul#user-details
           %li.user-name
             %i#1.fa.fa-star
@@ -35,8 +39,8 @@
         .table-cell
         -unless games.empty?
           %ul.leader#scores-ul
-            -(games).each do |game|
+            - (@scores.where(:user_id => @user.id)).each do |score|
             %li.entry
               %i.fa.fa-star
-              %h3 Game Number #{game[:gameNum]}
-              %span#1 #{game[:score]} Points
+              %h3 Game Number #{score.id}
+              %span#1 #{score.completeness} Points

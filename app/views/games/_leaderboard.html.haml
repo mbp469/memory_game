@@ -1,6 +1,10 @@
 %ul.leader
   - @users.each do |user|
-    = tag("li", id: 'entry#1', data: {user_id: user.id})
+    %li#1.entry
       %i#1.fa.fa-trophy
       %h3#1 #{user.username}
-      %span#1 #{@scores} points
+      %span#1
+        - sum = 0
+        - (@scores.where(:user_id => user.id)).each do |score|
+          - sum += score.completeness
+        = sum

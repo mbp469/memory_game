@@ -14,6 +14,8 @@ class UsersController < ApplicationController
   end
 
   def profile
+    @user = User.find(session[:user_id])
+    @scores = Score.all
   end
 
   def edit
