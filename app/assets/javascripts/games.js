@@ -173,18 +173,16 @@ $(document).on('turbolinks:load', function() {
 /*******************LOCAL STORAGE********************************/
 
   /* allGames is an array of game scores for a session */
-  let allGames = [];
-const storage = {
-  set() {
-    localStorage.setItem("games", JSON.stringify(allGames));
-  },
-  get() {
-    var games = localStorage.games === undefined ?
-      false :
-      JSON.parse(localStorage.games);
-    return games;
-  },
-};
-
-
+  var allGames = [];
+  var storage = {
+    set() {
+      localStorage.setItem("games", JSON.stringify(allGames));
+    },
+    get() {
+      var games = localStorage.games === undefined ?
+        false :
+        JSON.parse(localStorage.games);
+      return games;
+    },
+  };
 });
