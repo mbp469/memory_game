@@ -10,16 +10,6 @@ $darkBrown: #423B35;
 $black: black;
 $white: white;
 
-
-
-
-/****** Vendor Imports ******/
-
-/****** Style Page Imports ******/
-@import 'partials/leaderBoard'; /* -marian */
-@import 'partials/userPage';
-@import 'partials/header';
-
 /********** Main Styles ***********/
 *{
   box-sizing: border-box;
@@ -30,6 +20,9 @@ button {
   cursor: pointer;
 }
 
+ul {
+  list-style-type: none;
+}
 
 .h1-container {
   background: $darkBrown;

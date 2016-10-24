@@ -1,0 +1,20 @@
+$cardImages: 'dan.jpg', 'dana.png', 'jeff.jpg', 'bryce.jpg', 'nicole.jpeg', 'sam.jpg', 'tiy-group.jpg', 'alyssa.jpg', 'back-end.png', 'front-end.png', 'python.png', 'design.png', 'mobile.png';
+
+.card {
+  align-items: center;
+  cursor: pointer;
+  margin: 0 0 2vh 0;
+  width: 22%;
+  perspective: 1000px;
+  z-index: 50;
+
+
+  @for $index from 1 through length($cardImages) {
+    $image: nth($cardImages, $index);
+    &[data-card-id="#{$index}"] {
+      .front {
+        background-image: image_url($image);
+      }
+    }
+  }
+}
