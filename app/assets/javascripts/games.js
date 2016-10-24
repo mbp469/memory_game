@@ -43,7 +43,6 @@ $(document).on('turbolinks:load', function() {
     flipper.className = 'flipper';
     card.className = 'card';
 
-
     $(flipper).append(front, back);
     $(card).attr({'data-card-id': cardId, 'data-card-state': 'inactive'}).append(flipper);
     $('#board-container').append(card);
@@ -80,13 +79,23 @@ $(document).on('turbolinks:load', function() {
       }
     }
     if ($('#board-container').find('.card').length === $('[data-card-state=matched]').length) {
+      $.ajax({
+        type: "POST",
+        url: '/game',
+        data: {
+          user_id: $('#board-container').attr('data-user-id'),
+          completeness: scoreRound,
+          turns_taken: counter/2,
+        },
+      });
       console.log('you win! ' + counter/2 + ' tries.');
       allGames.push(scoreRound());
       storage.set();
-      console.log(allGames);
+      console.log(localStorage);
       var modal = document.getElementById('win-modal');
       var attempts = document.getElementById('attempts');
       $(attempts).text('You won in ' + counter/2 + ' attempts!');
+      counter = 0;
       modal.style.display = 'block';
     }
   }
@@ -94,21 +103,21 @@ $(document).on('turbolinks:load', function() {
   function scoreRound() {
     switch (level) {
       case 'Easy':
-      if (counter/2 < 4) {
+      if (counter/2 <= 4) {
         return 10;
       } else {
         return 5;
       }
       break;
       case 'Medium':
-      if (counter/2 < 8) {
+      if (counter/2 <= 8) {
         return 20;
       } else {
         return 10;
       }
       break;
       case 'Hard':
-      if (counter/2 < 12) {
+      if (counter/2 <= 12) {
         return 30;
       } else {
         return 15;
