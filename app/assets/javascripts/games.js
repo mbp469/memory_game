@@ -130,6 +130,7 @@ $(document).on('turbolinks:load', function() {
     var modal = document.getElementById('win-modal');
     modal.style.display = 'none';
     $('#board-container').empty();
+    $('html, body').animate({scrollTop:0}, 1000);
   });
 
   function selectDifficulty(difficulty) {
