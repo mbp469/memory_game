@@ -19,6 +19,7 @@ $(document).on('turbolinks:load', function() {
       $('html, body').stop().animate({
         scrollTop: $(".board-wrap").offset().top
       }, 1000);
+
       $('.card').on('click', handleCardClick);
     }
 
@@ -121,7 +122,7 @@ $(document).on('turbolinks:load', function() {
     modal.style.display = 'none';
     $('#board-container').empty();
   });
-  
+
   function selectDifficulty(difficulty) {
     if(difficulty=='Easy') {
       gameCards = getCardsByDifficulty(4);

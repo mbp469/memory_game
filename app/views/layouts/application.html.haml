@@ -12,6 +12,11 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
+    #win-modal.modal
+      .modal-content
+        %h1 You Win!
+        %h3#attempts
+        %input{:type=>'button', :class=>'play-again', :value=>'Play Again'}
     .container
     - if current_user
       %ul.user-prompts
