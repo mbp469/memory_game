@@ -194,6 +194,10 @@
 #scores-ul {
   background: none;
   margin: 0;
+  list-style: none;
+}
+.entry {
+  list-style: none;
 }
 @keyframes pulse {
     0% {
