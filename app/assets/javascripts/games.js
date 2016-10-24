@@ -1,5 +1,5 @@
 $(document).on('turbolinks:load', function() {
-  var counter = 0
+  var counter = 0;
   var height = $(window).height();
   var gameHeight = height + 'px';
   var level;
@@ -49,7 +49,7 @@ $(document).on('turbolinks:load', function() {
   }
 
   function handleCardClick() {
-    counter++
+    counter++;
     var state = $(this).attr('data-card-state');
     $(this).find('.flipper').toggleClass('flip');
 
@@ -63,7 +63,7 @@ $(document).on('turbolinks:load', function() {
 
     setTimeout(checkMatch, 500, activeCards);
     console.log(counter); // counter that works - div by 2, send to score table via scores#win action
-  };
+  }
 
   function checkMatch(activeCards) {
     if (activeCards.length === 2) {
@@ -175,10 +175,10 @@ $(document).on('turbolinks:load', function() {
   /* allGames is an array of game scores for a session */
   var allGames = [];
   var storage = {
-    set() {
+    set: function() {
       localStorage.setItem("games", JSON.stringify(allGames));
     },
-    get() {
+    get: function() {
       var games = localStorage.games === undefined ?
         false :
         JSON.parse(localStorage.games);
