@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   get 'profile' => 'users#profile'
 
+  put 'profile' => 'users#edit'
+
   get 'game' => 'games#index'
 
   get 'leaderboard' => 'games#leaderboard'
@@ -15,8 +17,6 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
 
   delete 'login' => 'sessions#destroy'
-
-  put 'profile' => 'users#edit'
 
   post 'game' => 'scores#win'
 

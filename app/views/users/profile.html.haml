@@ -23,18 +23,11 @@
                 - sum += score.completeness
               = sum
         %ul#user-details
-          %li.user-name
-            %i#1.fa.fa-star
-            %input#user-name.input-user-info{readonly:true, type:"text", placeholder:"#{userInfo[0][:name]}"}
-          %li.user-email
-            %i#1.fa.fa-envelope
-            %input#email.input-user-info{readonly:true, placeholder:"#{userInfo[0][:email]}", type: "email"}
-          %li.user-password
-            %i#1.fa.fa-key
-            %input#password.input-user-info{readonly:true, type:"password", placeholder:"#{userInfo[0][:password]}"}
-          %button#user-details-edit.edit-user Edit Your Information
-
-          -# Section holding games and scores
+          = form_for :user, url: profile_path, method: :put do |f|
+            = f.text_field :username, :placeholder => "Username"
+            = f.email_field :email, :placeholder => "Email"
+            = f.password_field :password, :placeholder => "Password"
+            = f.submit "Update account info", class: "btn-submit", id: 'button'
       %section.table#score-table.hidden
         .table-cell
         -unless games.empty?
